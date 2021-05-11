@@ -1,8 +1,8 @@
-import styled from "styled-components";
-
-const Leftside = (props) => {
-  return (
-    <Container>
+import React from 'react'
+import styled from'styled-components'
+function Leftprofile(props) {
+    return (
+        <Container>
       <ArtCard>
         <UserInfo>
           <CardBackground />
@@ -196,4 +196,4 @@ const CommunityCard = styled(ArtCard)`
   }
 `;
 
-export default Leftside;
+export default Leftprofile

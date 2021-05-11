@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from'styled-components'
-import Leftside from './Leftside'
+import Leftprofile from './Leftprofile'
 import Main from './Main'
-import Rightside from './Rightside'
+import Rightprofile from './Rightprofile'
+
 
 
 
@@ -17,9 +18,9 @@ function Home(props) {
              
          </Section>
          <Layout>            
-               <Leftside/>            
+                <Leftprofile/>       
                 <Main/>            
-               <Rightside/>            
+                <Rightprofile/>    
          </Layout>
 
      </Container>

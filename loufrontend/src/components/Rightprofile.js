@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from'styled-components'
-function RightSide(props) {
+function Rightprofile(props) {
     return (
         <Container>
                 Right 
@@ -8,7 +8,7 @@ function RightSide(props) {
     )
 }
 
-export default RightSide
+export default Rightprofile
 const Container= styled.div`
 grid-area:right;
 `;
