@@ -3,11 +3,6 @@ import styled from'styled-components'
 import Leftprofile from './Leftprofile'
 import Main from './Main'
 import Rightprofile from './Rightprofile'
-
-
-
-
-
 function Home(props) {
     return (
      <Container>
