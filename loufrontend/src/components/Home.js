@@ -10,6 +10,17 @@ function Home(props) {
                  <p>Find Talented in record and keep it moving</p>
              
          </Section>
+         <Layout>
+             <Leftside>
+                left
+             </Leftside>
+             <Main>
+                    main
+             </Main>
+             <Rightside>
+                right
+             </Rightside>
+         </Layout>
 
      </Container>
     )
@@ -48,4 +59,23 @@ p{
     padding:0 5px;
 }
 
+`;
+const Layout=styled.div`
+    display:grid;
+    grid-template-areas:"left main right";
+    grid-template-columns:minmax(0,5fr) minmax(0,12fr) minmax(300px,7fr);
+    column-gap:25px;
+    row-gap:25px;  
+    margin:25px 0;
+    @media(max-width:768px){
+        display:flex;
+        flex-direction:column;
+        padding:0 5px;
+    }
+`;
+const Leftside=styled.div`
+`;
+const Main=styled.div`
+`;
+const Rightside=styled.div`
 `;
