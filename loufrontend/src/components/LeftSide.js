@@ -1,11 +1,14 @@
 import React from 'react'
-
-function Leftside() {
+import styled from'styled-components'
+function Leftside(props) {
     return (
-        <div>
-            
-        </div>
+        <Container>
+           this is changes made on your left
+        </Container>
     )
 }
 
-export default Leftside
+export default Leftside;
+const Container=styled.div`
+grid-area:left;
+`;

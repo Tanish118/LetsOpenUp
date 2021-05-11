@@ -1,5 +1,11 @@
 import React from 'react'
 import styled from'styled-components'
+import Leftside from './Leftside'
+import Main from './Main'
+import Rightside from './Rightside'
+
+
+
 
 function Home(props) {
     return (
@@ -10,16 +16,10 @@ function Home(props) {
                  <p>Find Talented in record and keep it moving</p>
              
          </Section>
-         <Layout>
-             <Leftside>
-                left
-             </Leftside>
-             <Main>
-                    main
-             </Main>
-             <Rightside>
-                right
-             </Rightside>
+         <Layout>            
+               <Leftside/>            
+                <Main/>            
+               <Rightside/>            
          </Layout>
 
      </Container>
@@ -73,9 +73,4 @@ const Layout=styled.div`
         padding:0 5px;
     }
 `;
-const Leftside=styled.div`
-`;
-const Main=styled.div`
-`;
-const Rightside=styled.div`
-`;
+
