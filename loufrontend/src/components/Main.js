@@ -4,7 +4,28 @@ function Main(props) {
     return (
         <Container>
             <Sharebox>
-                Share
+               <div>
+                   <img src="/images/user.svg" alt=""/>
+                   <button>Start a Post</button>
+               </div>
+               <div>
+                   <button>
+                       <img src="/images/edit.png" alt=""/>
+                       <span>Photo</span>
+                   </button>
+                   <button>
+                       <img src="/images/videoframe.svg" alt=" "/>
+                       <span>Video</span>
+                   </button>
+                   <button>
+                       <img src="/images/events-icon.svg" alt=" "/>
+                       <span>Event</span>
+                   </button>
+                   <button>
+                       <img src="/images/article-icon.svg" alt=" "/>
+                       <span>Write Article</span>
+                   </button>
+               </div>
             </Sharebox>
         </Container>
     )
