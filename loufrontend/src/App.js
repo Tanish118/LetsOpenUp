@@ -22,6 +22,10 @@ function App() {
             <Header/>
             <Home/>
           </Route>
+          <Route>
+            </Route> 
+
+
         </Switch>
       </Router>
     </div>
