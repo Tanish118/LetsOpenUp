@@ -6,12 +6,12 @@ import Rightprofile from './Rightprofile'
 function Home(props) {
     return (
      <Container>
-         <Section>
+         {/* <Section>
              <h5>
                  <a>Hiring in a hurry?-</a></h5>
                  <p>Find Talented in record and keep it moving</p>
              
-         </Section>
+         </Section> */}
          <Layout>            
                 <Leftprofile/>       
                 <Main/>            

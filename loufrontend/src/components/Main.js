@@ -85,7 +85,7 @@ function Main(props) {
 
 export default Main
 const Container=styled.div`
-grid-area:main;
+    grid-area:main;
 `;
 const CommonCard=styled.div`
     text-align:center;
@@ -152,6 +152,7 @@ const Sharebox=styled(CommonCard)`
     }
 `;
 const Article=styled(CommonCard)`
+
     padding:0;
     margin:0 0 8px;
     overflow:visible;
