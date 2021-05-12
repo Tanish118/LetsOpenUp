@@ -61,6 +61,22 @@ function Main(props) {
                            <span>2 comments</span>
                             </a></li>
                     </SocialCount>
+                    <SocialActions>
+                        <button>
+                            <img src="/images/heart.svg" alt="" width="25" height="20"/>
+                            <span>Like</span>
+                        </button>
+                        <button>
+                            <img src="/images/icon-comment.svg" alt="" width="25" height="20"/>
+                            <span>Comment</span>
+                        </button>
+                        <button>
+                            <img src="/images/next.svg" alt="" width="25" height="20"/>
+                            <span>Share</span>
+                        </button>
+                    </SocialActions>
+
+
                 </Article>
             </div>
         </Container>
@@ -230,3 +246,4 @@ const SocialCount=styled.ul`
         }
     }
 `;
+const SocialActions=styled.div``;
