@@ -17,7 +17,7 @@ function Login(props) {
             </Nav>
             <Section>
                 <IMG>
-                <h1>Welcome To #LetsOpenUp</h1>
+                <h1>Lets HangOut Together</h1>
                 <img src="/images/login-hero.svg" alt=""/>
                 
                 </IMG>
@@ -69,8 +69,8 @@ const Join=styled.a`
     }
 `;
 const SignIn=styled.a`
-    box-shadow:inset 0 0 0 1px #0a66c2;
-    color:#0a66c2;
+    box-shadow:inset 0 0 0 1px #22bfa0;
+    color:#22bfa0;
     border-radius:16px;
     transition-duration:250ms;
     font-weight:600;
@@ -78,7 +78,7 @@ const SignIn=styled.a`
     padding:10px 24px;
     text-align:center;
     &:hover{
-        background-color:#0a66c2;
+        background-color:#22bfa0;
         color:white;
         text-decoration:none;
     }
@@ -108,7 +108,7 @@ width:100%;
     padding-bottom:0;
     width:55%;
     font-size:55px;
-    color:#2977c9;
+    color:#22bfa0;
     font-weight:200;
     line-height:70px;
     @media(max-width:768px){
