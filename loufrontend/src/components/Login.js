@@ -8,7 +8,7 @@ function Login(props) {
         <Container>
             <Nav>
                 <a href="/">
-                <img src='/images/login-logo.svg' alt=""/>
+                <img src="/images/login-hangout.png" alt="" height="150" width="180"/>
                 </a>
                 <div>
                     <Join> Join Now</Join>
@@ -17,7 +17,7 @@ function Login(props) {
             </Nav>
             <Section>
                 <IMG>
-                <h1>Lets HangOut Together</h1>
+                <h1>Lets Hangout</h1>
                 <img src="/images/login-hero.svg" alt=""/>
                 
                 </IMG>
@@ -107,10 +107,11 @@ width:100%;
     h1{
     padding-bottom:0;
     width:55%;
-    font-size:55px;
+    font-size:45px;
     color:#22bfa0;
     font-weight:200;
     line-height:70px;
+    
     @media(max-width:768px){
         text-align:center;
         font-size:20px;
