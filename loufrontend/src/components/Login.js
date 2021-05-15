@@ -2,10 +2,15 @@ import React from 'react'
 import styled from'styled-components'
 import{connect} from 'react-redux'
 import{signInAPI} from '../actions'
+import {Redirect} from 'react-router'
 function Login(props) {
     return (
-     
+        
         <Container>
+            {
+                props.user &&
+                <Redirect to= '/home'/>
+            }
             <Nav>
                 <a href="/">
                 <img src="/images/login-hangout.png" alt="" height="150" width="180"/>
@@ -166,7 +171,9 @@ const Google = styled.button`
   }
 `;
 const mapStateToProps=(state)=>{
-    return {};
+    return {
+        user:state.userState.user,
+    };
 };
 const mapDispatchToProps=(dispatch)=>({
     signIn:()=>dispatch(signInAPI()),
