@@ -3,9 +3,15 @@ import styled from'styled-components'
 import Leftprofile from './Leftprofile'
 import Main from './Main'
 import Rightprofile from './Rightprofile'
+import{Redirect} from'react-router-dom'
+import {connect} from 'react-redux'
 function Home(props) {
     return (
      <Container>
+         {
+             !props.user &&
+             <Redirect to="/" />
+         }
          {/* <Section>
              <h5>
                  <a>Hiring in a hurry?-</a></h5>
@@ -22,7 +28,7 @@ function Home(props) {
     )
 }
 
-export default Home
+
 const Container=styled.div`
     padding:52px;
     max-width:100%;
@@ -69,4 +75,9 @@ const Layout=styled.div`
         padding:0 5px;
     }
 `;
-
+const mapStateToProps=(state)=>{
+    return{
+        user:state.userState.user,
+    };
+};
+export default connect(mapStateToProps)(Home)

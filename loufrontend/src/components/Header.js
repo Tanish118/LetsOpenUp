@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import{connect} from 'react-redux'
+import {signOutAPI} from '../actions'
 const Header = (props) => {
   return (
     <Container>
@@ -56,13 +57,14 @@ const Header = (props) => {
 
             <User>
               <a>{props.user && props.user.photoURL? <img src={props.user.photoURL} alt="" />:
+                
                 <img src="/images/user.svg" alt="" />}
                 <span>Me
                 <img src="/images/down-icon.svg" alt="" />
                 </span>
               </a>
 
-              <SignOut>
+              <SignOut onClick={()=>props.signOut()}>
                 <a>Sign Out</a>
               </SignOut>
             </User>
@@ -222,6 +224,9 @@ const SignOut = styled.div`
   transition-duration: 167ms;
   text-align: center;
   display: none;
+  &:active{
+    background-color:#F08872;
+  }
 `;
 
 const User = styled(NavList)`
@@ -257,7 +262,7 @@ const mapStateToProps=(state)=>{
   };
 };
 const mapDispatchToProps=(dispatch)=>({
-  
+  signOut:()=>dispatch(signOutAPI()),  
 });
 
 //export default Login
