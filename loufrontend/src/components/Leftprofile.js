@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from'styled-components'
+import {connect} from 'react-redux'
 function Leftprofile(props) {
     return (
         <Container>
@@ -8,7 +9,7 @@ function Leftprofile(props) {
           <CardBackground />
           <a>
             <Photo />
-            <Link>Welcome, there!</Link>
+            <Link>Welcome,{props.user && props.user.displayName?props.user.displayName:"there"} !</Link>        
           </a>
           <a>
             <AddPhotoText>Add a photo</AddPhotoText>
@@ -195,5 +196,10 @@ const CommunityCard = styled(ArtCard)`
     }
   }
 `;
+const mapStateToProps=(state)=>{
+  return{
+      user:state.userState.user,
+  };
+};
 
-export default Leftprofile
+export default connect(mapStateToProps)(Leftprofile);
