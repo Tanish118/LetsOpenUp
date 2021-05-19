@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
+import PostModal from'./PostModal'
 function Main(props) {
     return (
-        <Container>
+        <Container>                    
             <Sharebox>
                <div>
                    <img src="/images/user.svg" alt=""/>
@@ -75,9 +76,8 @@ function Main(props) {
                             <span>Share</span>
                         </button>
                     </SocialActions>
-
-
                 </Article>
+                <PostModal/> 
             </div>
         </Container>
     )
@@ -154,7 +154,7 @@ const Sharebox=styled(CommonCard)`
 const Article=styled(CommonCard)`
 
     padding:0;
-    margin:0 0 8px;
+    margin:5px 0 8px;
     overflow:visible;
 
 `;
