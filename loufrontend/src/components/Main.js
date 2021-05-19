@@ -26,7 +26,7 @@ function Main(props) {
             <Sharebox>
                <div>
                    <img src="/images/user.svg" alt=""/>
-                   <button onclick={handleClick}>Start a Post</button>
+                   <button onClick={(event)=>handleClick(event)}>Start a Post</button>
                </div>
                <div>
                    <button>

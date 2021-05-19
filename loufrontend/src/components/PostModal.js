@@ -10,7 +10,7 @@ function PostModal(props) {
     };
     return (
         <>
-        { props.showModal ==='close' &&
+        { props.showModal ==='open' &&
        <Container>
            <Content>
                 <Header>
