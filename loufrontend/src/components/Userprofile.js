@@ -1,33 +1,45 @@
 import React from 'react'
+import styled from "styled-components";
 
 export default function profile(props){
     return (
-        <div>
+        <div style={{maxWidth:"550px",margin:"0px auto"}}>
             <div style={{
-            display:"flex",
-            justifyContent:"space-around",
-            margin:"18px 0px",
-            borderBottom:"1px solid grey"
+                display:"flex",
+                justifyContent:"space-around",
+                margin:"70px 0px",
+                borderBottom:"1px solid grey"
             }}>
                 <div>
-                    <img style={{width:"160px",height:"160px",borderRadius:"80px"}}
-                    src="https://images.unsplash.com/photo-1621306558135-3500aef6c517?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt='stick'/>
+                    <img style={{width:"180px",height:"180px",borderRadius:"90px"}}
+                    src="https://images.unsplash.com/photo-1608127347890-3fd1d0323b3f?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMTh8fHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt='stick'/>
                 </div>
                 <div>
-                    <h4>banda allah ka</h4>
+                    <p>banda allah ka</p>
                     <div style={{display:"flex",justifyContent:"space-between",width:"108%"}}>
-                        <h6>50 posts</h6>
-                        <h6>45 followers</h6>
-                        <h6>40 following</h6>
+                        <h5>50 posts</h5>
+                        <h5>45 followers</h5>
+                        <h5>40 following</h5>
                     </div>
 
                 </div>
             </div>
-            <div className="gallery">
-                <img className="item" src="https://images.unsplash.com/photo-1621324124020-fb7e2571a600?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMTF8fHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt='thick' />
-            </div>
+            <Container>
+
+                <img  src="https://images.unsplash.com/photo-1621324124020-fb7e2571a600?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMTF8fHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt='thick' />
+                <img  src="https://images.unsplash.com/photo-1621324124020-fb7e2571a600?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMTF8fHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt='thick' />
+                <img  src="https://images.unsplash.com/photo-1621324124020-fb7e2571a600?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMTF8fHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt='thick' />
+                <img  src="https://images.unsplash.com/photo-1621324124020-fb7e2571a600?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMTF8fHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt='thick' />
+              
+            </Container>
         </div>
 
     )
+
 }
+const Container = styled.div`
+display: flex;
+flex-wrap: wrap;
+justify-content: ;
+`
 

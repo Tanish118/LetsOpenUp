@@ -28,7 +28,7 @@ function App(props) {
             <Home/>
           </Route>
           <Route path="/profile">
-            <Header />
+           <Header />
             <Profile />
             </Route> 
 
