@@ -30,14 +30,7 @@ const Header = (props) => {
             <NavList>
               <a>
                 <img src="/images/nav-network.svg" alt="" />
-                <span>Social Circle</span>
-              </a>
-            </NavList>
-
-            <NavList>
-              <a>
-                <img src="/images/nav-jobs.svg" alt="" />
-                <span>Jobs</span>
+                <span>Profile</span>
               </a>
             </NavList>
 
