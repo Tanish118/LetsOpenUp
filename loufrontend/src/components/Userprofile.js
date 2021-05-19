@@ -15,7 +15,7 @@ export default function profile(props){
                     src="https://images.unsplash.com/photo-1608127347890-3fd1d0323b3f?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMTh8fHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt='stick'/>
                 </div>
                 <div>
-                    <p>banda allah ka</p>
+                    <h1>banda allah ka</h1>
                     <div style={{display:"flex",justifyContent:"space-between",width:"108%"}}>
                         <h5>50 posts</h5>
                         <h5>45 followers</h5>
@@ -40,6 +40,7 @@ export default function profile(props){
 const Container = styled.div`
 display: flex;
 flex-wrap: wrap;
-justify-content: ;
+/* justify-content: ; */
 `
 
+    

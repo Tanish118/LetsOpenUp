@@ -132,7 +132,8 @@ const Sharebox=styled(CommonCard)`
             align-items:center;
             border: none;
             display:flex;
-            font-weight:600;
+            border-radius:8px;
+            font-weight:600;           
         }
         &:first-child{
             display:flex;
@@ -151,7 +152,13 @@ const Sharebox=styled(CommonCard)`
                 border:1px solid rgba(0,0,0,0.2);
                 background-color:white;
                 text-align:left;
-
+                &:hover{
+                background-color:#dff5f0;               
+                }
+                &:active{
+                background-color:#bacfca;               
+                }
+               
             }
         }
         &:nth-child(2){
@@ -166,6 +173,9 @@ const Sharebox=styled(CommonCard)`
                 span{
                     color:#70b5f9;
                 }
+                &:active{
+                background-color:#89e8d5;               
+            }
             }
         }
     }
