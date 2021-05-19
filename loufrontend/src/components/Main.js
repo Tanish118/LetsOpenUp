@@ -1,13 +1,32 @@
+import {useState} from'react'
 import React from 'react'
 import styled from 'styled-components'
 import PostModal from'./PostModal'
 function Main(props) {
+    const [showModal,setModal]=useState("close");
+    const handleClick=(e)=>{
+        e.preventDefault();
+        if(e.target !== e.currentTarget){
+            return;
+        }
+        switch(showModal){
+            case "open":
+                setModal("close");
+                break;
+            case "close":
+                setModal("open");
+                break;
+            default:
+                setModal("close");
+                break;
+        }
+    };
     return (
         <Container>                    
             <Sharebox>
                <div>
                    <img src="/images/user.svg" alt=""/>
-                   <button>Start a Post</button>
+                   <button onclick={handleClick}>Start a Post</button>
                </div>
                <div>
                    <button>
@@ -76,9 +95,9 @@ function Main(props) {
                             <span>Share</span>
                         </button>
                     </SocialActions>
-                </Article>
-                <PostModal/> 
+                </Article>                
             </div>
+            <PostModal showModal={showModal} handleClick={handleClick}/> 
         </Container>
     )
 }
