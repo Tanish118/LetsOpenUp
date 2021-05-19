@@ -9,7 +9,7 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Login from './components/Login';
 import {getUserAuth} from'./actions'
-import Profile from './components/profile';
+import Profile from './components/Userprofile';
 import { connect } from 'react-redux';
 
 function App(props) {
@@ -28,7 +28,7 @@ function App(props) {
             <Home/>
           </Route>
           <Route path="/profile">
-            {/* <Header /> */}
+            <Header />
             <Profile />
             </Route> 
 

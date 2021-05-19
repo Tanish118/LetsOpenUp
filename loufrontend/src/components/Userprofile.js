@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Profile(props){
+export default function profile(props){
     return (
         <div>
             <div style={{
@@ -14,7 +14,7 @@ export default function Profile(props){
                     src="https://images.unsplash.com/photo-1621306558135-3500aef6c517?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt='stick'/>
                 </div>
                 <div>
-                    <h4>allah ka banda</h4>
+                    <h4>banda allah ka</h4>
                     <div style={{display:"flex",justifyContent:"space-between",width:"108%"}}>
                         <h6>50 posts</h6>
                         <h6>45 followers</h6>
