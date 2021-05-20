@@ -41,13 +41,12 @@ function PostModal(props) {
                         autoFocus={true}/>
                         <UploadImg>
                             <input type="file" accept="image/png, image/gif, image/jpeg"
-                                name='image' id="file"
-                                style={{display:""}}
-                                onchange={(event)=>handleChange(event)} />
-                            <p>
-                                <label htmlfor="file">Select an image to share</label>
-                            </p>                        
-                            {shareImage && <img src={URL.createObjectURL(shareImage)}/>}     
+                                name='image' id="file"  style={{display:"none"}}  onChange={handleChange} />
+                            <label for="file">Select an image to share</label>                        
+                            {
+                                shareImage && <img src={URL.createObjectURL(shareImage)} alt=""/>
+                            }  
+                          
                             <>
                                 <input type="text" placeholder="Enter Video Link"
                                 value={videoLink} onChange={(event)=>setVideoLink(event.target.value)}/>
