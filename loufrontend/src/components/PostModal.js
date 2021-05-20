@@ -1,9 +1,20 @@
 import React from 'react'
 import{useState} from'react'
 import styled from'styled-components'
+ import ReactPlayer from'react-player'
 function PostModal(props) {
     const[editorText,funcEditor] = useState("");
-
+    const [shareImage,setShareImage]=useState("");
+    const[videoLink, setVideoLink]=useState("");
+    
+    const handleChange=(e)=>{
+        const image=e.target.files[0];
+        if(image ==='' ||image ===undefined){
+            alert(`File selected is not a image, It is a ${typeof image}`);
+            return;
+        }
+        setShareImage(image);
+    };
     const reset=(e)=>{
         funcEditor("")
         props.handleClick(e);
@@ -28,6 +39,24 @@ function PostModal(props) {
                         onChange={(e)=>funcEditor(e.target.value)}
                         placeholder="What Do you Like to Add to your Timeline..." 
                         autoFocus={true}/>
+                        <UploadImg>
+                            <input type="file" accept="image/png, image/gif, image/jpeg"
+                                name='image' id="file"
+                                style={{display:""}}
+                                onchange={(event)=>handleChange(event)} />
+                            <p>
+                                <label htmlfor="file">Select an image to share</label>
+                            </p>                        
+                            {shareImage && <img src={URL.createObjectURL(shareImage)}/>}     
+                            <>
+                                <input type="text" placeholder="Enter Video Link"
+                                value={videoLink} onChange={(event)=>setVideoLink(event.target.value)}/>
+                                {
+                                    videoLink && <ReactPlayer width={"100%"} url={videoLink}/>
+                                }
+                            </>                   
+                        </UploadImg>
+                       
                     </Editor>
                 </SharedContent>
                 <SharedCreation>
@@ -45,7 +74,7 @@ function PostModal(props) {
                    </AssetButton>
                    </SharedComment>
 
-                   <PostButton>
+                   <PostButton disabled={!editorText?true:false}>
                        Post
                    </PostButton>
                 </SharedCreation>
@@ -149,6 +178,9 @@ const AssetButton=styled.button`
     &:hover{
         background-color:#E5E4E2;
     }
+    &:active{
+        background-color:#4FFFFF;
+    }
 `;
 const CustomButtons=styled.div`
     align-items:center;
@@ -195,4 +227,10 @@ input{
     margin-bottom:20px;
 }
 
+`;
+const UploadImg=styled.div`
+    text-align:center;
+    img{
+        width:100%;
+    }
 `;
