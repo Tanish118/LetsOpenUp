@@ -1,12 +1,13 @@
 import React from 'react'
 import{useState} from'react'
 import styled from'styled-components'
+import{connect} from'react-redux'
  import ReactPlayer from'react-player'
 function PostModal(props) {
     const[editorText,funcEditor] = useState("");
     const [shareImage,setShareImage]=useState("");
     const[videoLink, setVideoLink]=useState("");
-    
+    const[assetArea,setAssetArea]=useState("");
     const handleChange=(e)=>{
         const image=e.target.files[0];
         if(image ==='' ||image ===undefined){
@@ -15,8 +16,16 @@ function PostModal(props) {
         }
         setShareImage(image);
     };
+    const switchAssetArea=(area)=>{
+        setShareImage("");
+        setVideoLink("");
+        setAssetArea(area);
+    }
     const reset=(e)=>{
-        funcEditor("")
+        funcEditor("");
+        setShareImage("");
+        setVideoLink("");
+        setAssetArea("");
         props.handleClick(e);
     };
     return (
@@ -30,8 +39,9 @@ function PostModal(props) {
                 </Header>
                 <SharedContent>
                     <UserInfo>
-                        <img src="/images/user.svg" alt=""/>                  
-                        <span>Name</span>
+                    {props.user && props.user.photoURL? <img src={props.user.photoURL} alt="" />:
+                        <img src="/images/user.svg" alt=""/>    }              
+                        <span>{props.user && props.user.displayName?props.user.displayName:""}</span>
                     </UserInfo>
 
                     <Editor>
@@ -39,6 +49,9 @@ function PostModal(props) {
                         onChange={(e)=>funcEditor(e.target.value)}
                         placeholder="What Do you Like to Add to your Timeline..." 
                         autoFocus={true}/>
+                        {
+                            assetArea==='image'?
+                        
                         <UploadImg>
                             <input type="file" accept="image/png, image/gif, image/jpeg"
                                 name='image' id="file"  style={{display:"none"}}  onChange={handleChange} />
@@ -46,24 +59,25 @@ function PostModal(props) {
                             {
                                 shareImage && <img src={URL.createObjectURL(shareImage)} alt=""/>
                             }  
-                          
+                        </UploadImg>
+                        :
+                        assetArea==='media' &&
                             <>
                                 <input type="text" placeholder="Enter Video Link"
                                 value={videoLink} onChange={(event)=>setVideoLink(event.target.value)}/>
                                 {
                                     videoLink && <ReactPlayer width={"100%"} url={videoLink}/>
                                 }
-                            </>                   
-                        </UploadImg>
-                       
+                            </> 
+                        } 
                     </Editor>
                 </SharedContent>
                 <SharedCreation>
                    <CustomButtons> 
-                        <AssetButton>
+                        <AssetButton onClick={()=>switchAssetArea("image")}>
                         <img src="/images/icon-gallery.svg" alt=""/>
                         </AssetButton>
-                        <AssetButton>
+                        <AssetButton onClick={()=>switchAssetArea("media")}>
                         <img src="/images/youtube.svg" alt=""/>
                         </AssetButton>
                    </CustomButtons>
@@ -84,7 +98,7 @@ function PostModal(props) {
     )
 }
 
-export default PostModal
+
 const Container = styled.div`
     position:fixed;
     top:0;
@@ -229,7 +243,22 @@ input{
 `;
 const UploadImg=styled.div`
     text-align:center;
+    Label{
+        padding:2px 8px;
+        border-radius: 5px;
+        background-color: #c0ebe2;
+        &:active{
+            background-color: #0ac49d;
+        }
+    }
     img{
         width:100%;
     }
 `;
+const mapStateToProps=(state)=>{
+    return{
+        user:state.userState.user,
+    };
+  };
+const mapDispatchToProps=(dispatch)=>({});
+export default connect(mapStateToProps,mapDispatchToProps)(PostModal);
