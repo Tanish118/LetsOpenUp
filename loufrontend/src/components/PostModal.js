@@ -246,6 +246,7 @@ const UploadImg=styled.div`
     Label{
         padding:2px 8px;
         border-radius: 5px;
+        border:1px solid rgba(0,0,0,0.6);
         background-color: #c0ebe2;
         &:active{
             background-color: #0ac49d;

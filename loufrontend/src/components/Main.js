@@ -2,6 +2,7 @@ import {useState} from'react'
 import React from 'react'
 import styled from 'styled-components'
 import PostModal from'./PostModal'
+import{connect} from'react-redux'
 function Main(props) {
     const [showModal,setModal]=useState("close");
     const handleClick=(e)=>{
@@ -25,7 +26,8 @@ function Main(props) {
         <Container>                    
             <Sharebox>
                <div>
-                   <img src="/images/user.svg" alt=""/>
+               {props.user && props.user.photoURL? <img src={props.user.photoURL} alt="" />:
+                        <img src="/images/user.svg" alt=""/>    }  
                    <button onClick={(event)=>handleClick(event)}>Start a Post</button>
                </div>
                <div>
@@ -102,7 +104,7 @@ function Main(props) {
     )
 }
 
-export default Main
+
 const Container=styled.div`
     grid-area:main;
 `;
@@ -307,3 +309,10 @@ const SocialActions=styled.div`
     }
 
 `;
+const mapStateToProps=(state)=>{
+    return{
+        user:state.userState.user,
+    };
+  };
+const mapDispatchToProps=(dispatch)=>({});
+export default connect(mapStateToProps,mapDispatchToProps)(Main);

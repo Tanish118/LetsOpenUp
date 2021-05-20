@@ -7,9 +7,13 @@ function Leftprofile(props) {
       <ArtCard>
         <UserInfo>
           <CardBackground />
-          <a>
-            <Photo />
-            <Link>Welcome,{props.user && props.user.displayName?props.user.displayName:"there"} !</Link>        
+          <a>          
+              <Photo>
+              {props.user && props.user.photoURL? <img src={props.user.photoURL} alt="" />:
+                        <img src="/images/user.svg" alt=""/>    }  
+              </Photo>
+            <Link>Welcome,
+            {props.user && props.user.displayName?props.user.displayName:"there"} !</Link>        
           </a>
           <a>
             <AddPhotoText>Add a photo</AddPhotoText>
@@ -98,6 +102,11 @@ const Photo = styled.div`
   border: 2px solid white;
   margin: -38px auto 12px;
   border-radius: 50%;
+  img{
+    border-radius: 50%;
+    width: 100%;
+  height: 100%;
+  }
 `;
 
 const Link = styled.div`
