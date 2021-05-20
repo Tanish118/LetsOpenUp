@@ -1,0 +1,13 @@
+.item {
+    width: 30%;
+    padding:1px;
+    
+}
+.gallery{
+display: flex;
+flex-wrap: wrap;
+}
+
+.picture {
+  font-size: 30px;
+}
