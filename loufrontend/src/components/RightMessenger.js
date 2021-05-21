@@ -22,6 +22,7 @@ export default RightMessenger
 
 const Container= styled.div`
    display: flex;
+   /* flex-direction:column; */
    @media(max-width:768px){
     flex-direction:column;
     padding:0 5px;
