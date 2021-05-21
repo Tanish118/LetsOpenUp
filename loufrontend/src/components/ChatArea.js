@@ -15,15 +15,15 @@ function ChatArea(props) {
             <ChatInput>
                 <ControlPointIcon/>
                 <UsrMessage>
-                    <div>
+                    <form>
                     <input type="text" placeholder="Type Your Message here" />
                     
                     <button type="submit">Send</button>
-                    </div>
+                    </form>
                  </UsrMessage>
                 <ChatInputIcons>
-                    <GifIcon/>
-                    <EmojiEmotionsIcon/>
+                   <span> <GifIcon/></span>
+                   <span> <EmojiEmotionsIcon/></span>
                 </ChatInputIcons>
             </ChatInput>
             
@@ -35,7 +35,7 @@ const UsrMessage = styled.div`
   position: relative;
   color:white;
   flex:1;
-  & > div {
+  & > form {
      
     max-width: 280px;
     align-items: center;
@@ -47,6 +47,7 @@ const UsrMessage = styled.div`
         font-size:medium;
         outline-width:0;
     }
+   
     button{
         display: none;
     }
@@ -65,9 +66,13 @@ const ChatInput=styled.div`
     background-color: #383434;    
 `;
 const ChatMess=styled.div`
+flex:1;
 `;
 
 const ChatInputIcons=styled.div`
+     span{
+        padding:4px;
+    }
      
 `;
 const Container=styled.div`   
