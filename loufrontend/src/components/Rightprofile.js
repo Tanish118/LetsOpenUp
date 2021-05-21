@@ -33,8 +33,8 @@ function Rightprofile(props) {
                     <UserVoice>
                         <SignalCellularAltIcon fontSize="medium"/>
                         <br/>
-                        <p>@{props.user && props.user.displayName?props.user.displayName:"User"} <br/> Connected</p>
-                       
+                        <p>@{props.user && props.user.displayName?props.user.displayName:"User"} | Connected</p>
+                       <InfoIcon/>
                     </UserVoice>                
                </SideBar>
         
@@ -93,7 +93,7 @@ const UserVoice=styled.div`
     border-top:1px solid black; border-bottom:1px solid black;
     display:flex;
     padding:10px;
-   justify-content:left;
+   justify-content:space-between;
    align-items: center;
    color:Green;
    P{
