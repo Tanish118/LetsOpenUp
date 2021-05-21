@@ -1,7 +1,15 @@
 import React from 'react'
+import styled from'styled-components'
+import{Redirect} from'react-router-dom'
+import {connect} from 'react-redux'
 
-export default function profile(props){
+ function profile(props){
     return (
+        <Container>
+            {
+                !props.user &&
+                <Redirect to="/" />
+            }
         <div style={{maxWidth:"700px",margin:"0px auto"}}>
             <div style={{
                 display:"flex",
@@ -44,10 +52,19 @@ export default function profile(props){
               
             </div>
         </div>
-
+        </Container>
     )
 
 }
+const Container=styled.div`
+padding :0px;
+`;
 
+const mapStateToProps=(state)=>{
+    return{
+        user:state.userState.user,
+    };
+};
+export default connect(mapStateToProps)(profile)
 
     
