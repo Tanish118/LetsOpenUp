@@ -3,6 +3,7 @@ import{useState} from'react'
 import styled from'styled-components'
 import{connect} from'react-redux'
  import ReactPlayer from'react-player'
+ import YouTubeIcon from '@material-ui/icons/YouTube';
 function PostModal(props) {
     const[editorText,funcEditor] = useState("");
     const [shareImage,setShareImage]=useState("");

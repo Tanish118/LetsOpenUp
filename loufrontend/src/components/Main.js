@@ -3,6 +3,11 @@ import React from 'react'
 import styled from 'styled-components'
 import PostModal from'./PostModal'
 import{connect} from'react-redux'
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import EventIcon from '@material-ui/icons/Event';
+import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
+import PhotoIcon from '@material-ui/icons/Photo';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 function Main(props) {
     const [showModal,setModal]=useState("close");
     const handleClick=(e)=>{
@@ -32,19 +37,19 @@ function Main(props) {
                </div>
                <div>
                    <button>
-                       <img src="/images/gallery.svg" alt="" width="20" height="20"/>
+                       <PhotoIcon/>
                        <span>Photo</span>
                    </button>
                    <button>
-                       <img src="/images/videoframe.svg" alt=" " width="20" height="20"/>
+                       <VideoLibraryIcon/>
                        <span>Video</span>
                    </button>
                    <button>
-                       <img src="/images/events-icon.svg" alt=" " width="20" height="20"/>
+                       <EventIcon/>
                        <span>Event</span>
                    </button>
                    <button>
-                       <img src="/images/article-icon.svg" alt=" " width="20" height="20"/>
+                       <AssignmentIcon/>
                        <span>Write Article</span>
                    </button>
                </div>
@@ -61,7 +66,7 @@ function Main(props) {
                             </div>
                         </a>
                         <button>
-                            <img src="/images/more.svg" alt="" height="30" width="30"/>
+                            <MoreHorizIcon/>
                         </button>
                     </SharedActor>
                     <Description>

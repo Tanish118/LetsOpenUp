@@ -1,38 +1,59 @@
 import React from 'react'
+import {connect} from 'react-redux'
 import styled from'styled-components'
+import SideBarChannel from './SideBarChannel'
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import SignalCellularAltIcon from '@material-ui/icons/SignalCellularAlt';
+import InfoIcon from '@material-ui/icons/Info';
 function Rightprofile(props) {
     return (
         <Container>
-               <SideBar>
-                   
+               <SideBar>                   
                    <SideTop>
-                        <h3>Room  </h3>
-                        <img src="/images/down-icon.svg" alt="" />
+                        <h3>HangOut Room  </h3>
+                        <KeyboardArrowDownIcon/>
                    </SideTop>
                    <SideChannels>
                         <ChannelHeader>
                             <BarHeader>
-                            <img src="/images/down-icon.svg" alt="" />
+                            <KeyboardArrowDownIcon/>
                             <h4>Text Channels</h4>
                             </BarHeader>
+                            <AddCircleIcon/>
                         </ChannelHeader>
-                   </SideChannels>
-
+                        <ChannelList>
+                                <SideBarChannel/>
+                                <SideBarChannel/>
+                                <SideBarChannel/>
+                                <SideBarChannel/>
+                        </ChannelList>
+                   </SideChannels>   
+                   
+                    <UserVoice>
+                        <SignalCellularAltIcon fontSize="medium"/>
+                    
+                        <p>@{props.user && props.user.displayName?props.user.displayName:"User"} | Connected</p>
+                       <span><InfoIcon/></span> 
+                    </UserVoice>                
                </SideBar>
         </Container>
     )
 }
 
-export default Rightprofile
+
 const Container= styled.div`
 grid-area:right;
+border: 1px solid black;
+border-radius: 4px;
+height: 100vh;
 `;
 const SideBar=styled.div`
 display: flex;
 flex-direction: column;
 flex:0.25;
 height:100vh;
-background-color:#607d77;
+background-color:#d3f0ea;
 `;
 const SideTop=styled.div`
     display: flex;
@@ -40,12 +61,57 @@ const SideTop=styled.div`
     align-items: center;
     padding:3px;
     background-color:white ;
-    color:black;
+    color:#40464b ;
     border-bottom: 3px solid black;
+    
+    
 `;
 const SideChannels=styled.div`
+    flex:1;
 `;
 const ChannelHeader=styled.div`
+    display:flex;
+    justify-content: space-between;
+    padding:10px;
+    background-color: #15967b;
+    color:white;
 `;
 const BarHeader=styled.div`
+    display: flex;
+    align-items:center;
+    img{
+        padding:4px;
+    }
 `;
+const ADDchannel=styled.span`
+    cursor:pointer;
+    border-radius:50%;
+  
+    &:hover{
+        background-color: white;
+    }
+`;
+const UserVoice=styled.div`
+    border-top:1px solid black; border-bottom:1px solid black;
+    display:flex;
+    padding:10px;
+   justify-content:left;
+   align-items: center;
+   color:Green;
+   P{
+       font-weight: 600;
+   }
+   span{
+       color:grey;
+   }
+`;
+const ChannelList=styled.div`
+
+`;
+const mapStateToProps=(state)=>{
+    return{
+        user:state.userState.user,
+    };
+  };
+  
+  export default connect(mapStateToProps)(Rightprofile);
