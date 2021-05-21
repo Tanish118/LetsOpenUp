@@ -11,6 +11,7 @@ import Login from './components/Login';
 import {getUserAuth} from'./actions'
 import Profile from './components/Userprofile';
 import { connect } from 'react-redux';
+import RightMessenger from './components/RightMessenger';
 
 function App(props) {
   useEffect(()=>{
@@ -31,6 +32,10 @@ function App(props) {
            <Header />
             <Profile />
             </Route> 
+            <Route Path="/messenger">
+              {/* <Header/> */}
+              <RightMessenger/>
+            </Route>
         </Switch>
       </Router>
     </div>

@@ -18,7 +18,7 @@ function Rightprofile(props) {
                         <ChannelHeader>
                             <BarHeader>
                             <KeyboardArrowDownIcon/>
-                            <h4>Text Channels</h4>
+                            <h4>Channels</h4>
                             </BarHeader>
                             <AddCircleIcon/>
                         </ChannelHeader>
@@ -26,7 +26,7 @@ function Rightprofile(props) {
                                 <SideBarChannel/>
                                 <SideBarChannel/>
                                 <SideBarChannel/>
-                                <SideBarChannel/>
+                                
                         </ChannelList>
                    </SideChannels>   
                    
@@ -49,8 +49,9 @@ border-radius: 4px;
 display: flex;
 flex-direction: column;
 flex:0.25;
-height:100%;
+height:95vh;
 background-color:#d3f0ea;
+overflow: visible;
 `;
 const SideTop=styled.div`
     display: flex;
@@ -59,8 +60,7 @@ const SideTop=styled.div`
     padding:3px;
     background-color:white ;
     color:#40464b ;
-    border-bottom: 3px solid black;
-    
+    border-bottom: 3px solid black;  
     
 `;
 const SideChannels=styled.div`
@@ -75,7 +75,7 @@ const ChannelHeader=styled.div`
 `;
 const BarHeader=styled.div`
     display: flex;
-    align-items:center;
+    align-items:center;    
     img{
         padding:4px;
     }
@@ -90,7 +90,7 @@ const ADDchannel=styled.span`
 `;
 const UserVoice=styled.div`
     border-top:1px solid black; border-bottom:1px solid black;
-    display:flex;
+    display:flex;    
     padding:10px;
    justify-content:space-between;
    align-items: center;

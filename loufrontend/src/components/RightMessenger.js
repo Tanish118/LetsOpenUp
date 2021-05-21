@@ -2,26 +2,28 @@
 import React from 'react'
 import styled from'styled-components'
 import ChatArea from './ChatArea';
+import Main from './Main';
 import Rightprofile from './Rightprofile';
 
 
 function RightMessenger() {
     return (
         <Container>
-            <Messenger>
+            
                 <Rightprofile/>
                 <ChatArea/>
-            </Messenger>
+            
         </Container>
 
     )
 }
 
 export default RightMessenger
-const Messenger=styled.div`
 
-`;
 const Container= styled.div`
-    grid-area: right;
-   
+   display: flex;
+   @media(max-width:768px){
+    flex-direction:column;
+    padding:0 5px;
+    }
 `;
