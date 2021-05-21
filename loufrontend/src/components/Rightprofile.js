@@ -8,7 +8,7 @@ import SignalCellularAltIcon from '@material-ui/icons/SignalCellularAlt';
 import InfoIcon from '@material-ui/icons/Info';
 function Rightprofile(props) {
     return (
-        <Container>
+        
                <SideBar>                   
                    <SideTop>
                         <h3>HangOut Room  </h3>
@@ -32,23 +32,21 @@ function Rightprofile(props) {
                    
                     <UserVoice>
                         <SignalCellularAltIcon fontSize="medium"/>
-                    
-                        <p>@{props.user && props.user.displayName?props.user.displayName:"User"} | Connected</p>
-                       <span><InfoIcon/></span> 
+                        <br/>
+                        <p>@{props.user && props.user.displayName?props.user.displayName:"User"} <br/> Connected</p>
+                       
                     </UserVoice>                
                </SideBar>
-        </Container>
+        
     )
 }
 
 
-const Container= styled.div`
-grid-area:right;
-border: 1px solid black;
-border-radius: 4px;
-height: 100vh;
-`;
+
 const SideBar=styled.div`
+ grid-area: channel;
+border:1px solid black;
+border-radius: 4px;
 display: flex;
 flex-direction: column;
 flex:0.25;

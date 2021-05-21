@@ -5,6 +5,7 @@ import Main from './Main'
 import Rightprofile from './Rightprofile'
 import{Redirect} from'react-router-dom'
 import {connect} from 'react-redux'
+import RightMessenger from './RightMessenger'
 function Home(props) {
     return (
      <Container>
@@ -21,7 +22,7 @@ function Home(props) {
          <Layout>            
                 <Leftprofile/>       
                 <Main/>            
-                <Rightprofile/>    
+                <RightMessenger/>   
          </Layout>
 
      </Container>
