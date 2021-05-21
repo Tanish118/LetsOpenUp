@@ -66,8 +66,8 @@ const Header = (props) => {
               <a>
                 <img src="/images/nav-work.svg" alt="" />
                 <span>
-                  Work
-                  <img src="/images/down-icon.svg" alt="" />
+                  {/* Work
+                  <img src="/images/down-icon.svg" alt="" /> */}
                 </span>
               </a>
             </Work>

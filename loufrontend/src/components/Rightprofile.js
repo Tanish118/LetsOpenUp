@@ -44,13 +44,12 @@ function Rightprofile(props) {
 
 
 const SideBar=styled.div`
- grid-area: channel;
 border:1px solid black;
 border-radius: 4px;
 display: flex;
 flex-direction: column;
 flex:0.25;
-height:100vh;
+height:100%;
 background-color:#d3f0ea;
 `;
 const SideTop=styled.div`

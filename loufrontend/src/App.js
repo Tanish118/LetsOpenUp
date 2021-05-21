@@ -31,8 +31,6 @@ function App(props) {
            <Header />
             <Profile />
             </Route> 
-
-
         </Switch>
       </Router>
     </div>

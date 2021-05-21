@@ -10,7 +10,7 @@ function RightMessenger() {
         <Container>
             <Messenger>
                 <Rightprofile/>
-                {/* <ChatArea/> */}
+                <ChatArea/>
             </Messenger>
         </Container>
 
@@ -23,7 +23,5 @@ const Messenger=styled.div`
 `;
 const Container= styled.div`
     grid-area: right;
-    /* display:grid;
-    grid-template-areas:"channel chatArea";   
-    grid-template-columns:minmax(0,8fr) minmax(0,8fr) ; */
+   
 `;
