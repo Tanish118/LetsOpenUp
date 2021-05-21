@@ -5,12 +5,8 @@ import {connect} from 'react-redux'
 
  function profile(props){
     return (
-        <Container>
-            {
-                !props.user &&
-                <Redirect to="/" />
-            }
-        <div style={{maxWidth:"700px",margin:"0px auto"}}>
+            
+        <div style={{maxWidth:"900px",margin:"0px auto"}}>
             <div style={{
                 display:"flex",
                 justifyContent:"space-around",
@@ -23,21 +19,24 @@ import {connect} from 'react-redux'
                 content: '',
             }}>
                 <div>
-                    <img style={{width:"160px",height:"160px",borderRadius:"90%"}}
+                    <img style={{width:"180px",height:"180px",borderRadius:"90%"}}
                     src="https://images.unsplash.com/photo-1617350697117-536a7e59a2cd?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDM5MHx0b3dKWkZza3BHZ3x8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt='stick'/>
                 </div>
                 <div>
-                    <div className="picture">Peter mckinnon </div>
+                    <div> <p className="picture"> Peter.mckinnon </p>
+                    <button className='doll'>Edit profile</button></div>
                     <div style={{
                     display:"flex",
                     justifyContent:"space-around",
-                    width:"108%",
+                    width:"110%",
+                    
                 }} >
                         <p>5 posts</p>
                         <p>64 followers</p>
                         <p>67 following</p>
                     </div>
-
+                   <h3 style={{padding:10}}>Peter mckinnon</h3>
+                   <p style={{width:300}}>Sometimes you'll never know the value of that moment ,until it becomes memory.</p>  
                 </div>
             </div>
             <div className="gallery">
@@ -52,7 +51,6 @@ import {connect} from 'react-redux'
               
             </div>
         </div>
-        </Container>
     )
 
 }
