@@ -13,7 +13,7 @@ function Login(props) {
             }
             <Nav>
                 <a href="/">
-                <img src="/images/login-hangout.png" alt="" height="150" width="180"/>
+                <img src="/images/logo.png" alt="" height="150" width="180"/>
                 </a>
                 <div>
                     <Join> Join Now</Join>
@@ -55,6 +55,7 @@ const Nav= styled.div`
         height:34px;
         @media(max-width:768px){
             padding:0 5px;
+            
         }
     }
 `;

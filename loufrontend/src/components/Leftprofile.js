@@ -15,9 +15,7 @@ function Leftprofile(props) {
             <Link>Welcome,
             {props.user && props.user.displayName?props.user.displayName:"there"} !</Link>        
           </a>
-          <a>
-            <AddPhotoText>Add a photo</AddPhotoText>
-          </a>
+         
         </UserInfo>
         <Widget>
           <a>
