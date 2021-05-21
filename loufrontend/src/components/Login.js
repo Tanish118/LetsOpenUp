@@ -13,7 +13,7 @@ function Login(props) {
             }
             <Nav>
                 <a href="/">
-                <img src="/images/login-hangout.png" alt="" height="150" width="180"/>
+                <img src="/images/logo.png" alt="" height="150" width="180"/>
                 </a>
                 <div>
                     <Join> Join Now</Join>

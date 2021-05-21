@@ -21,14 +21,14 @@ const Header = (props) => {
         <Nav>
           <NavListWrap>
             <NavList className="active">
-              <a>
+              <a href="/home">
                 <img src="/images/nav-home.svg" alt="" />
                 <span>Home</span>
               </a>
             </NavList>
 
             <NavList>
-              <a>
+              <a href="/profile">
                 <img src="/images/nav-network.svg" alt="" />
                 <span>Profile</span>
               </a>
