@@ -33,7 +33,7 @@ function App(props) {
             <Profile />
             </Route> 
             <Route Path="/messenger">
-              {/* <Header/> */}
+              <Header/>
               <RightMessenger/>
             </Route>
         </Switch>

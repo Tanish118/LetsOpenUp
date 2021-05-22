@@ -11,6 +11,7 @@ function ChatArea(props) {
         <Container>            
             <ChatHeader/>
             <ChatMess>
+                
             </ChatMess>
             <ChatInput>
                 <ControlPointIcon/>
@@ -81,7 +82,7 @@ border-radius: 4px;
 display: flex;
 flex-direction: column;
 flex:0.75;
-height:95vh;
+height:89vh;
 background-color:#caebe4;
 overflow: visible;
 `;

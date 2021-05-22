@@ -49,7 +49,7 @@ border-radius: 4px;
 display: flex;
 flex-direction: column;
 flex:0.25;
-height:95vh;
+height:89vh;
 background-color:#d3f0ea;
 overflow: visible;
 `;
@@ -89,7 +89,7 @@ const ADDchannel=styled.span`
     }
 `;
 const UserVoice=styled.div`
-    border-top:1px solid black; border-bottom:1px solid black;
+    border-top:1px solid black; 
     display:flex;    
     padding:10px;
    justify-content:space-between;
@@ -103,7 +103,7 @@ const UserVoice=styled.div`
    }
 `;
 const ChannelList=styled.div`
-
+    /* overflow-y: scroll; */
 `;
 const mapStateToProps=(state)=>{
     return{

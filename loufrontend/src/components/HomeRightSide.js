@@ -1,4 +1,3 @@
-
 import React from 'react'
 import styled from'styled-components'
 import ChatArea from './ChatArea';
@@ -6,24 +5,23 @@ import Main from './Main';
 import Rightprofile from './Rightprofile';
 
 
-function RightMessenger() {
+function HomeRightSide() {
     return (
         <Container>
             
                 <Rightprofile/>
-                <ChatArea/>
-            
+                <ChatArea/>            
         </Container>
 
     )
 }
 
-export default RightMessenger
+export default HomeRightSide
 
 const Container= styled.div`
     
    display: flex;
-   margin-top:70px;   
+   flex-direction:column;
    @media(max-width:768px){
     flex-direction:column;
     padding:0 5px;
