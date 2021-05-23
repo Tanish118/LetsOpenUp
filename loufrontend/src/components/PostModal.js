@@ -3,7 +3,8 @@ import{useState} from'react'
 import styled from'styled-components'
 import{connect} from'react-redux'
  import ReactPlayer from'react-player'
- import YouTubeIcon from '@material-ui/icons/YouTube';
+import firebase from "../firebase";
+import {postArticleAPI} from'../actions'
 function PostModal(props) {
     const[editorText,funcEditor] = useState("");
     const [shareImage,setShareImage]=useState("");
@@ -21,7 +22,27 @@ function PostModal(props) {
         setShareImage("");
         setVideoLink("");
         setAssetArea(area);
-    }
+    };
+
+    const postArticle=(e)=>{
+        console.log("Post Modal active")
+        e.preventDefault();
+        if(e.target!==e.currentTarget){
+            console.log("This is insites");
+            return;
+        }
+        const payload={
+            image:shareImage,
+            video:videoLink,
+            user:props.user,
+            description:editorText,
+           // timestamp:firebase.firestore.Timestamp.now(),
+          
+        };
+        console.log(payload);
+       // props.postArticle(payload);
+        reset(e);
+    };
     const reset=(e)=>{
         funcEditor("");
         setShareImage("");
@@ -56,7 +77,7 @@ function PostModal(props) {
                         <UploadImg>
                             <input type="file" accept="image/png, image/gif, image/jpeg"
                                 name='image' id="file"  style={{display:"none"}}  onChange={handleChange} />
-                            <label for="file">Select an image to share</label>                        
+                            <label htmlFor="file">Select an image to share</label>                        
                             {
                                 shareImage && <img src={URL.createObjectURL(shareImage)} alt=""/>
                             }  
@@ -88,7 +109,10 @@ function PostModal(props) {
                    </AssetButton>
                    </SharedComment>
 
-                   <PostButton disabled={!editorText?true:false}>
+                   <PostButton 
+                    disabled={!editorText?true:false}
+                    onClick={(event)=>postArticle(event)}
+                    >
                        Post
                    </PostButton>
                 </SharedCreation>
@@ -262,5 +286,8 @@ const mapStateToProps=(state)=>{
         user:state.userState.user,
     };
   };
-const mapDispatchToProps=(dispatch)=>({});
+const mapDispatchToProps=(dispatch)=>({
+    //postArticle:(payload)=>dispatch(postArticleAPI(payload)),
+    
+});
 export default connect(mapStateToProps,mapDispatchToProps)(PostModal);
