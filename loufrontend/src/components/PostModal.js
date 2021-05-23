@@ -4,7 +4,7 @@ import styled from'styled-components'
 import{connect} from'react-redux'
  import ReactPlayer from'react-player'
 import firebase from "../firebase";
-import {postArticleAPI} from'../actions'
+import {newPostAPI, postArticleAPI} from'../actions'
 function PostModal(props) {
     const[editorText,funcEditor] = useState("");
     const [shareImage,setShareImage]=useState("");
@@ -36,11 +36,11 @@ function PostModal(props) {
             video:videoLink,
             user:props.user,
             description:editorText,
-           // timestamp:firebase.firestore.Timestamp.now(),
+        //    timestamp:firebase.firestore.Timestamp.now(),
           
         };
         console.log(payload);
-       // props.postArticle(payload);
+        props.postArticle(payload);
         reset(e);
     };
     const reset=(e)=>{
@@ -287,7 +287,7 @@ const mapStateToProps=(state)=>{
     };
   };
 const mapDispatchToProps=(dispatch)=>({
-    //postArticle:(payload)=>dispatch(postArticleAPI(payload)),
+    postArticle:(payload)=>dispatch(newPostAPI(payload)),
     
 });
 export default connect(mapStateToProps,mapDispatchToProps)(PostModal);

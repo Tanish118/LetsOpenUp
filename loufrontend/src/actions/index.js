@@ -35,7 +35,26 @@ export function signOutAPI(){
             alert(error.message) });
     }
 }
-
+export function newPostAPI(payload){
+    return(dispatch)=>{
+        console.log("inside actions chilling");
+    console.log(payload);    
+    if(payload.video){
+    db.collection("articles").add({
+        actor:{
+            description:payload.user.email,
+            title:payload.user.displayName,
+            //date:payload.timestamp,
+            image:payload.user.photoURL
+        },
+        video:payload.video,
+        sharedImg:"",
+        comments:0,
+        description:payload.description,
+            });
+        }
+    };
+};
 export function postArticleAPI(payload){
     return(dispatch)=>{
         if(payload.image!==' '){
