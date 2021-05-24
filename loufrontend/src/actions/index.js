@@ -44,7 +44,7 @@ export function newPostAPI(payload){
         actor:{
             description:payload.user.email,
             title:payload.user.displayName,
-            //date:payload.timestamp,
+            date:payload.timestamp,
             image:payload.user.photoURL
         },
         video:payload.video,
