@@ -9,6 +9,7 @@ import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
 import PhotoIcon from '@material-ui/icons/Photo';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import {getArticlesAPI} from '../actions'
+import ReactPlayer from'react-player'
 function Main(props) {
     const [showModal,setModal]=useState("close");
 
@@ -70,21 +71,16 @@ function Main(props) {
                </div>
             </Sharebox>
             <Content>
-              { props.loading && <img src="/images/loading.gif" alt=""/>
-                }
-                 {/* {
-                     props.articles.length >0 &&
-                     props.articles.map(article,key)=>(
-                        <Article key={key}></Article>
-                     )
-                 }      */}
-                <Article>
+              { props.loading && <img src="/images/loading.gif" alt=""/>}
+                {   props.articles.length>0 &&
+                    props.articles.map((article,key)=>(
+                <Article key={key}>
                     <SharedActor>
                         <a>
-                            <img src="/images/user.svg" alt="" />
+                            <img src={article.actor.image} alt="" />
                             <div>
-                                <span>Title</span>
-                                <span>Info</span>
+                                <span>{article.actor.title}</span>
+                                <span>{article.actor.description}</span>                                
                                 <span>Date</span>
                             </div>
                         </a>
@@ -93,11 +89,19 @@ function Main(props) {
                         </button>
                     </SharedActor>
                     <Description>
-                        Text
+                    {article.description}
+                  
                     </Description>
                     <SharedImg>
                         <a>
-                            <img src="/images/postbg.jpg" alt=""/>
+                            {   <ReactPlayer width={"100%"} url={article.video}/>
+                                // !props.articles.sharedImg &&
+                                // props.articles.video?
+                                // console.log(props.article.video):
+                                // <img src="/images/postbg.jpg" alt=""/>
+
+                            }
+                         {/* //  <img src="/images/postbg.jpg" alt=""/> */}
                         </a>
                     </SharedImg>
                     <SocialCount>
@@ -125,7 +129,8 @@ function Main(props) {
                             <span>Share</span>
                         </button>
                     </SocialActions>
-                </Article>                
+                </Article> 
+                    ))}               
                 </Content>
             <PostModal showModal={showModal} handleClick={handleClick}/> 
         </Container>

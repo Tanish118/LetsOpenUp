@@ -25,21 +25,22 @@ function App(props) {
             <Login/>
           </Route>
 
-          <Route  path='/home'>
+          <Route exact path='/home'>
             <Header/>
             <Home/>
           </Route>
 
-          <Route path="/profile">
+          <Route exact path="/profile">
            <Header />
             <Profile />
             </Route> 
-{/* 
-            <Route Path="/messenger">
+            
+            <Route exact Path="/messenger">
               <Header/>
               <RightMessenger/>
-            </Route> */}
-
+            </Route>
+          
+           
         </Switch>
       </Router>
     </div>
