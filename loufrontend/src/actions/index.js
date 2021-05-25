@@ -12,6 +12,7 @@ export const setLoading=(status)=>({
     status:status,
 
 })
+
 export const getArticles=(payload)=>({
     type:GET_ARTICLES,
     payload:payload,
@@ -108,7 +109,26 @@ export function postArticleAPI(payload){
         }
     };
 }
-
+export function messageAPI(payload){
+    return(dispatch)=>{       
+        console.log("inside MessAPI");
+        console.log(payload);    
+    
+    db.collection("messageLogs").add({
+        user:{
+            email:payload.user.email,
+            name:payload.user.displayName,
+            date:payload.timestamp,
+            image:payload.user.photoURL
+        },
+        message:payload.video,
+        // sharedImg:"",
+        // comments:0,
+        // description:payload.description,
+            });
+           
+    };
+}
 export function getArticlesAPI(){
     return (dispatch)=>{
         let payload;

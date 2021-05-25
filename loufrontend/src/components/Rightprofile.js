@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState ,useEffect}from 'react'
 import {connect} from 'react-redux'
 import styled from'styled-components'
 import SideBarChannel from './SideBarChannel'
@@ -6,7 +6,17 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import SignalCellularAltIcon from '@material-ui/icons/SignalCellularAlt';
 import InfoIcon from '@material-ui/icons/Info';
+import db from '../firebase'
 function Rightprofile(props) {
+    const [channels,setChannels]=useState([])
+    const handleAddChannel=()=>{
+        const channelName=prompt("Enter new Channel name");
+        if(channelName){
+            db.collection("channels").add({
+                channelName:channelName
+           });
+        }
+    }
     return (
         
                <SideBar>                   
@@ -20,7 +30,7 @@ function Rightprofile(props) {
                             <KeyboardArrowDownIcon/>
                             <h4>Channels</h4>
                             </BarHeader>
-                            <AddCircleIcon/>
+                            <AddCircleIcon onClick={handleAddChannel}/>
                         </ChannelHeader>
                         <ChannelList>
                                 <SideBarChannel/>

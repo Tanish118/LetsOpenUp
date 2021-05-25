@@ -6,12 +6,15 @@ import GifIcon from '@material-ui/icons/Gif';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 import ControlPointIcon from '@material-ui/icons/ControlPoint';
 import SearchIcon from '@material-ui/icons/Search';
+import Messege from './Messege';
 function ChatArea(props) {
     return (
         <Container>            
             <ChatHeader/>
             <ChatMess>
-                
+                <Messege/>
+                <Messege/>
+                <Messege/>
             </ChatMess>
             <ChatInput>
                 <ControlPointIcon/>
