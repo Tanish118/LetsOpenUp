@@ -24,18 +24,22 @@ function App(props) {
           <Route exact path='/'>
             <Login/>
           </Route>
+
           <Route  path='/home'>
             <Header/>
             <Home/>
           </Route>
+
           <Route path="/profile">
            <Header />
             <Profile />
             </Route> 
+{/* 
             <Route Path="/messenger">
               <Header/>
               <RightMessenger/>
-            </Route>
+            </Route> */}
+
         </Switch>
       </Router>
     </div>
