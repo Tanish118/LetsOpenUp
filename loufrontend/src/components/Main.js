@@ -34,6 +34,10 @@ function Main(props) {
         }
     };
     return (
+        <>
+        { props.articles.length===0?
+        (<p>There Are Nothing Posted ..</p>)
+        :(
         <Container>                    
             <Sharebox>
                 
@@ -68,7 +72,12 @@ function Main(props) {
             <Content>
               { props.loading && <img src="/images/loading.gif" alt=""/>
                 }
-                        
+                 {/* {
+                     props.articles.length >0 &&
+                     props.articles.map(article,key)=>(
+                        <Article key={key}></Article>
+                     )
+                 }      */}
                 <Article>
                     <SharedActor>
                         <a>
@@ -120,6 +129,8 @@ function Main(props) {
                 </Content>
             <PostModal showModal={showModal} handleClick={handleClick}/> 
         </Container>
+        )}
+        </>
     )
 }
 
@@ -338,6 +349,7 @@ const mapStateToProps=(state)=>{
     return{
         user:state.userState.user,
         loading:state.articleState.loading,
+        articles:state.articleState.articles,
     };
   };
 const mapDispatchToProps=(dispatch)=>({
