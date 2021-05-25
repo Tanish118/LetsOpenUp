@@ -9,6 +9,16 @@ import InfoIcon from '@material-ui/icons/Info';
 import db from '../firebase'
 function Rightprofile(props) {
     const [channels,setChannels]=useState([])
+    useEffect(() => {
+       db.collection("channels").onSnapshot((snapshot)=>
+        setChannels(
+            snapshot.docs.map((doc)=>({
+                id:doc.id,
+                channel:doc.data(),
+            }))
+        )
+       )
+    }, [])
     const handleAddChannel=()=>{
         const channelName=prompt("Enter new Channel name");
         if(channelName){
@@ -33,10 +43,12 @@ function Rightprofile(props) {
                             <AddCircleIcon onClick={handleAddChannel}/>
                         </ChannelHeader>
                         <ChannelList>
-                                <SideBarChannel/>
-                                <SideBarChannel/>
-                                <SideBarChannel/>
-                                
+                                {
+                                    channels.map((channel)=>(
+                                        <SideBarChannel/>
+                                    ))
+                                }
+                                                              
                         </ChannelList>
                    </SideChannels>   
                    
