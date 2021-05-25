@@ -1,4 +1,4 @@
-import {useState} from'react'
+import {useState,useEffect} from'react'
 import React from 'react'
 import styled from 'styled-components'
 import PostModal from'./PostModal'
@@ -8,8 +8,14 @@ import EventIcon from '@material-ui/icons/Event';
 import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
 import PhotoIcon from '@material-ui/icons/Photo';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import {getArticlesAPI} from '../actions'
 function Main(props) {
     const [showModal,setModal]=useState("close");
+
+    useEffect(()=>{
+        props.getArticles();
+    },[]);
+
     const handleClick=(e)=>{
         e.preventDefault();
         if(e.target !== e.currentTarget){
@@ -30,10 +36,15 @@ function Main(props) {
     return (
         <Container>                    
             <Sharebox>
+                
                <div>
                {props.user && props.user.photoURL? <img src={props.user.photoURL} alt="" />:
-                        <img src="/images/user.svg" alt=""/>    }  
-                   <button onClick={(event)=>handleClick(event)}>Start a Post</button>
+                        <img src="/images/user.svg" alt=""/>    }
+                 
+                   <button 
+                   onClick={(event)=>handleClick(event)}
+                   disabled={props.loading?true:false}
+                   >Start a Post</button>
                </div>
                <div>
                    <button>
@@ -54,7 +65,10 @@ function Main(props) {
                    </button>
                </div>
             </Sharebox>
-            <div>
+            <Content>
+              { props.loading && <img src="/images/loading.gif" alt=""/>
+                }
+                        
                 <Article>
                     <SharedActor>
                         <a>
@@ -103,13 +117,18 @@ function Main(props) {
                         </button>
                     </SocialActions>
                 </Article>                
-            </div>
+                </Content>
             <PostModal showModal={showModal} handleClick={handleClick}/> 
         </Container>
     )
 }
 
-
+const Content=styled.div`
+    text-align:center;
+    &>img{
+        width: 30px;        
+    }
+`;
 const Container=styled.div`
     grid-area:main;
     
@@ -318,7 +337,10 @@ const SocialActions=styled.div`
 const mapStateToProps=(state)=>{
     return{
         user:state.userState.user,
+        loading:state.articleState.loading,
     };
   };
-const mapDispatchToProps=(dispatch)=>({});
+const mapDispatchToProps=(dispatch)=>({
+    getArticles:(payload)=>dispatch(getArticlesAPI(payload)),
+});
 export default connect(mapStateToProps,mapDispatchToProps)(Main);
