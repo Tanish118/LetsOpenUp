@@ -39,8 +39,8 @@ function App(props) {
               <Header/>
               <RightMessenger/>
             </Route>
-          
-           
+
+            
         </Switch>
       </Router>
     </div>

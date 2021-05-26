@@ -1,6 +1,6 @@
 import {auth, provider, storage} from  '../firebase'
 import db from '../firebase'
-import { SET_USER,SET_LOADING_STATUS ,GET_ARTICLES} from './actionType';
+import { SET_USER,SET_LOADING_STATUS ,GET_ARTICLES,GET_MESSE} from './actionType';
 
 
 export const setUser=(payload)=>({
@@ -12,7 +12,10 @@ export const setLoading=(status)=>({
     status:status,
 
 })
-
+export const getMessages=(payload)=>({
+    type:GET_MESSE,
+    messages:payload,
+})
 export const getArticles=(payload)=>({
     type:GET_ARTICLES,
     payload:payload,
@@ -71,6 +74,7 @@ export function newPostAPI(payload){
         };
     };
 };
+
 export function postArticleAPI(payload){
     return(dispatch)=>{
         dispatch(setLoading(true))
@@ -138,6 +142,19 @@ export function getArticlesAPI(){
             console.log("inside get API")
             console.log(payload)
             dispatch(getArticles(payload));
+        });
+    }
+}
+
+export function getChannelAPI(){
+    return (dispatch)=>{
+        let payload;
+        db.collection('channels')
+        .onSnapshot((snapshot)=>{
+            payload=snapshot.docs.map((doc)=>doc.data());
+            console.log("inside getChannels API")
+            console.log(payload)
+            dispatch(getMessages(payload));
         });
     }
 }
