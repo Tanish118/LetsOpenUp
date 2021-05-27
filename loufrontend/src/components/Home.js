@@ -2,11 +2,8 @@ import React from 'react'
 import styled from'styled-components'
 import Leftprofile from './Leftprofile'
 import Main from './Main'
-import Rightprofile from './Rightprofile'
 import{Redirect} from'react-router-dom'
 import {connect} from 'react-redux'
-import RightMessenger from './RightMessenger'
-import HomeRightSide from './HomeRightSide'
 function Home(props) {
     return (
      <Container>
@@ -14,16 +11,12 @@ function Home(props) {
              !props.user &&
              <Redirect to="/" />
          }
-         {/* <Section>
-             <h5>
-                 <a>Hiring in a hurry?-</a></h5>
-                 <p>Find Talented in record and keep it moving</p>
-             
-         </Section> */}
+        
          <Layout>            
                 <Leftprofile/>       
-                <Main/>            
-                <HomeRightSide/>  
+                <Main/>   
+                         
+               
          </Layout>
 
      </Container>

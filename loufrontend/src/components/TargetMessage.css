@@ -1,0 +1,10 @@
+.info{
+    margin-left:15px;
+    position: relative;
+    width:100%;
+}
+.info>small{
+    position: absolute;
+    top:0;
+    right: 0;
+}

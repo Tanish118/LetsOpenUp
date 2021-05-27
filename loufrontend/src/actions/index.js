@@ -1,6 +1,6 @@
 import {auth, provider, storage} from  '../firebase'
 import db from '../firebase'
-import { SET_USER,SET_LOADING_STATUS ,GET_ARTICLES,GET_MESSE} from './actionType';
+import { SET_USER,SET_LOADING_STATUS ,GET_ARTICLES} from './actionType';
 
 
 export const setUser=(payload)=>({
@@ -12,10 +12,7 @@ export const setLoading=(status)=>({
     status:status,
 
 })
-export const getMessages=(payload)=>({
-    type:GET_MESSE,
-    messages:payload,
-})
+
 export const getArticles=(payload)=>({
     type:GET_ARTICLES,
     payload:payload,
@@ -113,26 +110,7 @@ export function postArticleAPI(payload){
         }
     };
 }
-export function messageAPI(payload){
-    return(dispatch)=>{       
-        console.log("inside MessAPI");
-        console.log(payload);    
-    
-    db.collection("messageLogs").add({
-        user:{
-            email:payload.user.email,
-            name:payload.user.displayName,
-            date:payload.timestamp,
-            image:payload.user.photoURL
-        },
-        message:payload.video,
-        // sharedImg:"",
-        // comments:0,
-        // description:payload.description,
-            });
-           
-    };
-}
+
 export function getArticlesAPI(){
     return (dispatch)=>{
         let payload;
@@ -146,15 +124,4 @@ export function getArticlesAPI(){
     }
 }
 
-export function getChannelAPI(){
-    return (dispatch)=>{
-        let payload;
-        db.collection('channels')
-        .onSnapshot((snapshot)=>{
-            payload=snapshot.docs.map((doc)=>doc.data());
-            console.log("inside getChannels API")
-            console.log(payload)
-            dispatch(getMessages(payload));
-        });
-    }
-}
+

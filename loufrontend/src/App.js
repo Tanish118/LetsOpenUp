@@ -11,7 +11,7 @@ import Login from './components/Login';
 import {getUserAuth} from'./actions'
 import Profile from './components/Userprofile';
 import { connect } from 'react-redux';
-import RightMessenger from './components/RightMessenger';
+import Messenger from'./components/Messenger'
 
 function App(props) {
   useEffect(()=>{
@@ -37,7 +37,7 @@ function App(props) {
             
             <Route exact Path="/messenger">
               <Header/>
-              <RightMessenger/>
+              <Messenger/>
             </Route>
 
             
