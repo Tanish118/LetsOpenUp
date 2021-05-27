@@ -11,7 +11,7 @@ function Sidebar(props) {
         <Container>      
         <Header>
         
-            <Avatar src={props.user.photoURL} className="side_avatar"/>
+            <Avatar src={props.user && props.user.photoURL} className="side_avatar"/>
             <SideInput>
                     <SearchIcon/>
                     <input placeholder="search"></input>
