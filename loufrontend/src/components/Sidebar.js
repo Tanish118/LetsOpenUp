@@ -11,7 +11,8 @@ import db from '../firebase'
 function Sidebar(props) {
     const [chats,setChats]=useState([]);
     useEffect(()=>{
-        db.collection('chats').onSnapshot(snapShot=>(
+        db.collection('chats')        
+        .onSnapshot(snapShot=>(
             setChats(snapShot.docs.map(doc=>({
                 id:doc.id,
                 data:doc.data(),

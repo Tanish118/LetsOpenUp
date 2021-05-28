@@ -11,7 +11,7 @@ function TextMess({id,email,message,photo,displayName,uid,timestamp}) {
                 {message}
              
             </p>
-            <small>  {timestamp.toDate().toLocaleTimeString()} 
+            <small>  {timestamp?.toDate().toLocaleTimeString()} 
             {/* {timestamp.toDate().toDateString()}  */}
             </small>
         </Container>
