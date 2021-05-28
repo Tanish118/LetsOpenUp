@@ -2,15 +2,15 @@ import { Avatar } from '@material-ui/core'
 import React from 'react'
 
 import styled from'styled-components'
-function TextMess(id,contents) {  
+function TextMess(id,timestamp,displayName,email,message,photo,uid ) {  
     
     return (       
         <Container >
-            <Avatar/>
+            <Avatar src={photo}/>
             <p>
-                Still not talking Mumma
+                pikka boom boom{message}
             </p>
-            <small>timestamp</small>
+            <small>timestamps</small>
         </Container>
     )
 }

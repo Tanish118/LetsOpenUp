@@ -16,14 +16,14 @@ function Chat(props) {
     const chatId=useSelector(selectChatId);
     
     useEffect(()=>{
-        // db.collection('chats').doc(chatId).collection("Messages").
-        // orderBy('timestamp','desc').onSnapshot(snapshot=>(
-        //     setMessages(snapshot.docs.map(doc=>({
+        // db.collection('chats').doc(chatId).collection('messages')
+        // .onSnapshot(snapShot=>(
+        //     setMessages(snapShot.docs.map(doc=>({
         //         id:doc.id,
-        //         data:doc.data()
+        //         data:doc.data(),
         //     })))
-        // ));
-    },[chatId]);
+        // ))
+    },[]);
     const sendMessage=e=>{
          e.preventDefault();       
         
@@ -46,13 +46,12 @@ function Chat(props) {
                 <strong>Details </strong>
            </Header>
            <Message>
-               {
-                   messages.map(({id,data})=>(
-                    <TextMess key={id} contents={data}/>
-                   ))
-               }
-                <TextMess />
-                <TextMess />
+               
+                {messages.map(({id,data:{timestamp,displayName,email,message,photo,uid}})=>(
+                 <TextMess key={id} id={id} timestamp={timestamp} displayName={displayName} email={email} message={message} photo={photo} uid={uid}/>
+            ))}
+            <TextMess/>
+               
                   
            </Message>
            <ChatInput>
