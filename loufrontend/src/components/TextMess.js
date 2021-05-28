@@ -11,8 +11,8 @@ function TextMess({id,email,message,photo,displayName,uid,timestamp}) {
                 {message}
              
             </p>
-            <small>  {timestamp?.toDate().toLocaleTimeString()} 
-            {/* {timestamp.toDate().toDateString()}  */}
+            <small>  {timestamp?.toDate().toLocaleTimeString()}  <br/>        
+            {timestamp?.toDate().toDateString()} 
             </small>
         </Container>
     )
@@ -34,9 +34,9 @@ const Container=styled.div`
     }
     &>small{
         color:gray;
-        position: absolute;
-       bottom:-5px;
-       right:0;
+        /* position: absolute; */
+       bottom:-5px;     
+       right:-1px;
        font-size:10px;
     }
 `;

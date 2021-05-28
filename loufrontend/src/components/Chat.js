@@ -17,7 +17,7 @@ function Chat(props) {
     
     useEffect(()=>{
         db.collection('messages')
-        .orderBy('timestamp','desc')
+        .orderBy('timestamp','asc')
         .onSnapshot(snapShot=>(
             setMessages(snapShot.docs.map(doc=>({
                 id:doc.id,
