@@ -2,7 +2,7 @@ import { Avatar } from '@material-ui/core'
 import React from 'react'
 
 import styled from'styled-components'
-function TextMess(id,chatName) {  
+function TextMess(id,contents) {  
     
     return (       
         <Container >

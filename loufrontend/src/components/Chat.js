@@ -1,31 +1,59 @@
 import React from 'react'
-import{useState} from'react'
+import{useState,useEffect} from'react'
 import styled from'styled-components'
 import SettingsVoiceIcon from '@material-ui/icons/SettingsVoice';
 import{IconButton} from'@material-ui/core'
 import TextMess from './TextMess';
 import { useSelector } from 'react-redux';
-import { selectChatName } from '../reducers/chatSlice';
-
-function Chat() {
+import{connect} from'react-redux'
+import { selectChatId, selectChatName } from '../reducers/chatSlice';
+import db from '../firebase';
+import firebase from'firebase'
+function Chat(props) {
     const[input,setInput] = useState("");    
     const chatName=useSelector(selectChatName);
-
+    const [messages,setMessages]=useState([]);
+    const chatId=useSelector(selectChatId);
+    
+    useEffect(()=>{
+        // db.collection('chats').doc(chatId).collection("Messages").
+        // orderBy('timestamp','desc').onSnapshot(snapshot=>(
+        //     setMessages(snapshot.docs.map(doc=>({
+        //         id:doc.id,
+        //         data:doc.data()
+        //     })))
+        // ));
+    },[chatId]);
     const sendMessage=e=>{
-        e.prevent.default();
+         e.preventDefault();       
+        
+        db.collection('chats').doc(chatId).collection('messages').add({
+          timestamp:firebase.firestore.FieldValue.serverTimestamp(),
+            message:input,
+            uid:props.user.uid,
+            displayName:props.user.displayName,
+            email:props.user.email,
+            photo:props.user.photoURL,
+        });
+        
         setInput("");
+
     };
     return (
         <Container>
            <Header>
-                <h4>To :<span> {chatName}</span></h4>
+                <h4>To :<span>  {chatName}</span></h4>
                 <strong>Details </strong>
            </Header>
            <Message>
-                  <TextMess/>
-                  <TextMess/>
-                  <TextMess/>
-                  <TextMess/>
+               {
+                   messages.map(({id,data})=>(
+                    <TextMess key={id} contents={data}/>
+                   ))
+               }
+                <TextMess />
+                <TextMess />
+                  
            </Message>
            <ChatInput>
                 <form>
@@ -97,4 +125,9 @@ const ChatInput=styled.div`
         }
     }
 `;
-export default Chat
+const mapStateToProps=(state)=>{
+    return{
+        user:state.userState.user,       
+    };
+  };
+  export default connect(mapStateToProps)(Chat);
