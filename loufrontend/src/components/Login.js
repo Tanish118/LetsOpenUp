@@ -3,7 +3,10 @@ import styled from'styled-components'
 import{connect} from 'react-redux'
 import{signInAPI} from '../actions'
 import {Redirect} from 'react-router'
+import Loginmodel from './Loginmodel'
+import JoinModal from './JoinModal'
 function Login(props) {
+    
     return (
         
         <Container>
@@ -11,6 +14,7 @@ function Login(props) {
                 props.user &&
                 <Redirect to= '/home'/>
             }
+          
             <Nav>
                 <a href="/">
                 <img src="/images/logo.png" alt="" height="150" width="180"/>
@@ -31,6 +35,7 @@ function Login(props) {
                         <img src="/images/google.svg" alt=""/>
                         SignIn With Google
                     </Google>
+                    <Loginmodel/>
                 </Form>
             </Section>
         </Container>
