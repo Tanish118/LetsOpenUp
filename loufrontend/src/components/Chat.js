@@ -16,7 +16,9 @@ function Chat(props) {
     const chatId=useSelector(selectChatId);
     
     useEffect(()=>{
-        db.collection('messages')
+        db
+         .collection('chats').doc(chatId)
+        .collection('messages')
         .orderBy('timestamp','asc')
         .onSnapshot(snapShot=>(
             setMessages(snapShot.docs.map(doc=>({
@@ -24,12 +26,12 @@ function Chat(props) {
                 data:doc.data(),
             })))
         ))
-    },[]);
+    },[chatId]);
     const sendMessage=e=>{
          e.preventDefault();       
         
         db
-        // .collection('chats').doc(chatId)
+        .collection('chats').doc(chatId)
         .collection('messages').add({
           timestamp:firebase.firestore.FieldValue.serverTimestamp(),
             message:input,

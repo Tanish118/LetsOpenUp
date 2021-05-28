@@ -8,6 +8,7 @@ function TextMess({id,email,message,photo,displayName,uid,timestamp}) {
         <Container >
             <Avatar src={photo} />
             <p>
+                
                 {message}
              
             </p>
