@@ -8,15 +8,10 @@ function TextMess({id,email,message,photo,displayName,uid,timestamp}) {
         <Container >
             <Avatar src={photo} />
             <p>
-              {/* {id} ---
-              {displayName} --
-              {email}    --       */}
-               {message}  --
-               {/* {uid} */}
+              {id} ---{displayName} --{email}    --       {message}  --{uid}
              
             </p>
-            <small>  {timestamp?.toDate().toLocaleTimeString()}</small>
-            {/* <small> {timestamp?.toDate().toDateString()} </small> */}
+            <small>  {timestamp.toDate().toLocaleTimeString('en-US')} {timestamp.toDate().toDateString()} timestamps</small>
         </Container>
     )
 }
@@ -40,7 +35,6 @@ const Container=styled.div`
         position: absolute;
        bottom:-5px;
        right:0;
-       font-size:12px;
     }
 `;
 

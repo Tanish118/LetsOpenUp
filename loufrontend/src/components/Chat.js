@@ -99,6 +99,10 @@ const Header=styled.div`
     }
 `;
 const Message=styled.div`
+  overflow-y:scroll;
+    ::-webkit-scrollbar{
+        display:none;
+    }
    flex:1;
    background-color: white;
    background: url("/images/ggmessenger.jpg");
