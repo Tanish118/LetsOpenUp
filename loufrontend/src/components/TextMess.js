@@ -2,15 +2,21 @@ import { Avatar } from '@material-ui/core'
 import React from 'react'
 
 import styled from'styled-components'
-function TextMess(id,timestamp,displayName,email,message,photo,uid ) {  
+function TextMess({id,email,message,photo,displayName,uid,timestamp}) {  
     
     return (       
         <Container >
-            <Avatar src={photo}/>
+            <Avatar src={photo} />
             <p>
-                pikka boom boom{message}
+              {/* {id} ---
+              {displayName} --
+              {email}    --       */}
+               {message}  --
+               {/* {uid} */}
+             
             </p>
-            <small>timestamps</small>
+            <small>  {timestamp?.toDate().toLocaleTimeString()}</small>
+            {/* <small> {timestamp?.toDate().toDateString()} </small> */}
         </Container>
     )
 }
@@ -34,6 +40,7 @@ const Container=styled.div`
         position: absolute;
        bottom:-5px;
        right:0;
+       font-size:12px;
     }
 `;
 

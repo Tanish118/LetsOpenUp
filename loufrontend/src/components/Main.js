@@ -81,7 +81,7 @@ function Main(props) {
                             <div>
                                 <span>{article.actor.title}</span>
                                 <span>{article.actor.description}</span>                                
-                                <span>Date</span>
+                                <span> {article.actor.date?.toDate().toDateString()}</span>
                             </div>
                         </a>
                         <button>

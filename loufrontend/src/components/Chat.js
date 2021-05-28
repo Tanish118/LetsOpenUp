@@ -2,7 +2,7 @@ import React from 'react'
 import{useState,useEffect} from'react'
 import styled from'styled-components'
 import SettingsVoiceIcon from '@material-ui/icons/SettingsVoice';
-import{IconButton} from'@material-ui/core'
+import{Avatar, IconButton} from'@material-ui/core'
 import TextMess from './TextMess';
 import { useSelector } from 'react-redux';
 import{connect} from'react-redux'
@@ -16,18 +16,20 @@ function Chat(props) {
     const chatId=useSelector(selectChatId);
     
     useEffect(()=>{
-        // db.collection('chats').doc(chatId).collection('messages')
-        // .onSnapshot(snapShot=>(
-        //     setMessages(snapShot.docs.map(doc=>({
-        //         id:doc.id,
-        //         data:doc.data(),
-        //     })))
-        // ))
+        db.collection('messages')
+        .onSnapshot(snapShot=>(
+            setMessages(snapShot.docs.map(doc=>({
+                id:doc.id,
+                data:doc.data(),
+            })))
+        ))
     },[]);
     const sendMessage=e=>{
          e.preventDefault();       
         
-        db.collection('chats').doc(chatId).collection('messages').add({
+        db
+        // .collection('chats').doc(chatId)
+        .collection('messages').add({
           timestamp:firebase.firestore.FieldValue.serverTimestamp(),
             message:input,
             uid:props.user.uid,
@@ -47,10 +49,10 @@ function Chat(props) {
            </Header>
            <Message>
                
-                {messages.map(({id,data:{timestamp,displayName,email,message,photo,uid}})=>(
-                 <TextMess key={id} id={id} timestamp={timestamp} displayName={displayName} email={email} message={message} photo={photo} uid={uid}/>
+           {messages.map(({id,data:{message,email,photo,displayName,uid,timestamp}})=>(
+                 <TextMess key={id} id={id} email={email} message={message} photo={photo} displayName={displayName} uid={uid} timestamp={timestamp}/>
             ))}
-            <TextMess/>
+            
                
                   
            </Message>
