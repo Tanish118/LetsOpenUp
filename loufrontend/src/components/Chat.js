@@ -14,10 +14,10 @@ function Chat(props) {
     const chatName=useSelector(selectChatName);
     const [messages,setMessages]=useState([]);
     const chatId=useSelector(selectChatId);
-    
+   ;
     useEffect(()=>{
         db
-         .collection('chats').doc(chatId)
+        //  .collection('chats').doc(chatId)
         .collection('messages')
         .orderBy('timestamp','asc')
         .onSnapshot(snapShot=>(
@@ -31,7 +31,7 @@ function Chat(props) {
          e.preventDefault();       
         
         db
-        .collection('chats').doc(chatId)
+        // .collection('chats').doc(chatId)
         .collection('messages').add({
           timestamp:firebase.firestore.FieldValue.serverTimestamp(),
             message:input,
@@ -46,6 +46,7 @@ function Chat(props) {
     };
     return (
         <Container>
+           
            <Header>
                 <h4>To :<span>  {chatName}</span></h4>
                 <strong>Details </strong>
@@ -60,6 +61,7 @@ function Chat(props) {
                   
            </Message>
            <ChatInput>
+            
                 <form>
                     <input 
                     value={input}

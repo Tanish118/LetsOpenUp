@@ -1,0 +1,40 @@
+.message{
+    display:flex;
+    align-items: center;
+    position:relative;
+    width:fit-content;
+    justify-content: space-between;
+    margin:15px;
+}
+.message>p{
+    margin:10px;
+    border-radius:20px 5px 20px 5px;
+    padding:15px;
+    background-color: #22bfa0;
+    color:white;
+    margin-right: auto;
+}
+.message>small{
+    color:gray;
+        position: absolute;
+       bottom:-15px;     
+       right:0;
+       font-size:10px;
+}
+.message_sender{
+    margin-left:auto;    
+}
+.message_sender>.message_photo{
+    order:1;
+    margin:15px;
+}
+.message_photo{
+    order:0;    
+}
+.message_sender>p{
+    border-radius:5px 20px 5px 20px;
+    background-color: #d5ebe6;
+    color:#06614c;
+    font-weight:500;
+    border:2px solid #22bfa0;
+}

@@ -1,11 +1,24 @@
 import { Avatar } from '@material-ui/core'
 import React from 'react'
+import{useState,useEffect} from'react'
 import styled from'styled-components'
 import"./TargetMessage.css"
 import {setChat} from '../reducers/chatSlice'
 import{useDispatch } from'react-redux'
+import db from '../firebase';
+import firebase from'firebase'
 function TargetMessage({id,chatName}) {
     const dispatch=useDispatch();
+    const [chatInfo,setChatInfo]=useState([]);
+    useEffect(()=>{
+      db
+    //   .collection("chats").doc(id)
+      .collection("messages")
+      .orderBy("timestamp","desc")
+      .onSnapshot((snapshot)=>
+        setChatInfo(snapshot.docs.map((doc)=>doc.data()))
+      );
+    },[id]);
     return (
         
         <Container onClick={()=>
@@ -16,12 +29,15 @@ function TargetMessage({id,chatName}) {
                 })
             )}
         >
-            <Avatar/>
+            <Avatar src={chatInfo[0]?.photo}/>
             <div className="info">
                 <h3>{chatName}</h3>
-                <p>we Dont Talk AnyMore                  
+                <p>{chatInfo[0]?.message}                 
                 </p>
-                <small>timestamp</small>
+                <small>
+                    {/* {chatInfo[0].timestamp?.toDate().toLocaleTimeString()} */}
+                      time
+                    </small>
             </div >
         </Container>
     )
