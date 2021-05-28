@@ -1,4 +1,5 @@
 import React from 'react'
+import{useState,useEffect} from'react'
 import{Avatar,IconButton} from'@material-ui/core'
 import styled from'styled-components'
 import RateReviewIcon from '@material-ui/icons/RateReview';
@@ -6,7 +7,25 @@ import SearchIcon from '@material-ui/icons/Search';
 import"./sidebar.css"
 import TargetMessage from './TargetMessage';
 import{connect} from'react-redux'
+import db from '../firebase'
 function Sidebar(props) {
+    const [chats,setChats]=useState([]);
+    useEffect(()=>{
+        db.collection('chats').onSnapshot(snapShot=>(
+            setChats(snapShot.docs.map(doc=>({
+                id:doc.id,
+                data:doc.data(),
+            })))
+        ))
+    },[]);
+    const addChat=()=>{
+        const chatName=prompt('Enter ChatName');
+        if(chatName){
+        db.collection('chats').add({
+            chatName:chatName,
+        });
+        }
+    };
     return (
         <Container>      
         <Header>
@@ -17,22 +36,15 @@ function Sidebar(props) {
                     <input placeholder="search"></input>
             </SideInput>
             <IconButton variant="outlined" className="inputButton">
-            <RateReviewIcon/>
+            <RateReviewIcon onClick={addChat}/>
             </IconButton>
         </Header>
         <Chats>
-            <TargetMessage/>
-            <TargetMessage/>
-            <TargetMessage/>
-            <TargetMessage/>
-            <TargetMessage/>
-            <TargetMessage/>
-            <TargetMessage/>
-            <TargetMessage/>
-            <TargetMessage/>
-            <TargetMessage/>
-            <TargetMessage/>
-            <TargetMessage/>
+            {chats.map(({id,data:{chatName}})=>(
+                 <TargetMessage key={id} id={id} chatName={chatName}/>
+            ))}
+             
+           
         </Chats>
         </Container>
     )

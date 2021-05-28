@@ -2,12 +2,23 @@ import { Avatar } from '@material-ui/core'
 import React from 'react'
 import styled from'styled-components'
 import"./TargetMessage.css"
-function TargetMessage() {
+import {setChat} from '../reducers/chatSlice'
+import{useDispatch } from'react-redux'
+function TargetMessage({id,chatName}) {
+    const dispatch=useDispatch();
     return (
-        <Container>
+        
+        <Container onClick={()=>
+            dispatch(
+                setChat({
+                    chatId:id,
+                    chatName:chatName,
+                })
+            )}
+        >
             <Avatar/>
             <div className="info">
-                <h3>Yo Mumma</h3>
+                <h3>{chatName}</h3>
                 <p>we Dont Talk AnyMore                  
                 </p>
                 <small>timestamp</small>

@@ -16,6 +16,7 @@ function messenger() {
 const Imessage=styled.div`
     margin-top:70px;
    display:flex;
+   /* flex-direction: column; */
    border:2px solid lightgray;
    border-radius:6px;
 `;

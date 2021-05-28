@@ -3,9 +3,14 @@ import{useState} from'react'
 import styled from'styled-components'
 import SettingsVoiceIcon from '@material-ui/icons/SettingsVoice';
 import{IconButton} from'@material-ui/core'
+import TextMess from './TextMess';
+import { useSelector } from 'react-redux';
+import { selectChatName } from '../reducers/chatSlice';
 
 function Chat() {
-    const[input,setInput] = useState("");
+    const[input,setInput] = useState("");    
+    const chatName=useSelector(selectChatName);
+
     const sendMessage=e=>{
         e.prevent.default();
         setInput("");
@@ -13,13 +18,14 @@ function Chat() {
     return (
         <Container>
            <Header>
-                <h4>To :<span> Yo Mumma</span></h4>
+                <h4>To :<span> {chatName}</span></h4>
                 <strong>Details </strong>
            </Header>
            <Message>
-               <h1> yo muumma cant bear me</h1>
-               <h1> yo muumma cant bear me</h1>
-               <h1> yo muumma cant bear me</h1>
+                  <TextMess/>
+                  <TextMess/>
+                  <TextMess/>
+                  <TextMess/>
            </Message>
            <ChatInput>
                 <form>
