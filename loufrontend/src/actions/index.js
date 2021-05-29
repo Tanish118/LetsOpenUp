@@ -1,4 +1,4 @@
-import {auth, provider, storage} from  '../firebase'
+import {firebaseApp,auth, provider, storage} from  '../firebase'
 import db from '../firebase'
 import { SET_USER,SET_LOADING_STATUS ,GET_ARTICLES} from './actionType';
 
@@ -65,9 +65,25 @@ export function newPostAPI(payload){
             dispatch(setLoading(false));
         }
         else if (payload.image!==""){
-            // const upload=storage.ref(`images/${payload.image.name}`)
-            // .put(payload.image);
-           // var uploadTask = storage.ref('images/${payload.image.name}').put(payload.image);
+            const storageRef=firebaseApp.storage().ref()
+            const fileRef=storageRef.child(payload.image.name)
+            fileRef.put(payload.image).then(()=>{
+                console.log("Uploaded And rolling")
+            }) 
+                db.collection("articles").add({
+                    actor:{
+                        description:payload.user.email,
+                        title:payload.user.displayName,
+                        date:payload.timestamp,
+                        image:payload.user.photoURL
+                    },
+                    video:payload.video,
+                    sharedImg:payload.image.name,
+                    comments:0,
+                    description:payload.description,
+                });
+                dispatch(setLoading(false));
+                    
         };
     };
 };
@@ -76,7 +92,7 @@ export function postArticleAPI(payload){
     return(dispatch)=>{
         dispatch(setLoading(true))
         if(payload.image!==' '){
-            const upload=storage
+            const upload=firebaseApp.storage()
             .ref(`images/${payload.image.name}`)
             .put(payload.image);
         upload.on('state_changed',
