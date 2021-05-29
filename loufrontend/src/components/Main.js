@@ -90,12 +90,12 @@ function Main(props) {
                     </SharedActor>
                     <Description>
                     {article.description}
-                  
+                        
                     </Description>
                     <SharedImg>
                         <a>
                             {  article.video? <ReactPlayer width={"100%"} url={article.video}/>
-                                :<img src="/images/postbg.jpg" alt=""/>                                
+                                :<img src={article.sharedImg} alt=""/>                                
                                 // !props.articles.sharedImg &&
                                 // props.articles.video?
                                 // console.log(props.article.video):

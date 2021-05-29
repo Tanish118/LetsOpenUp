@@ -67,23 +67,11 @@ export function newPostAPI(payload){
         else if (payload.image!==""){
             const storageRef=firebaseApp.storage().ref()
             const fileRef=storageRef.child(payload.image.name)
-            fileRef.put(payload.image).then(()=>{
+            let upload=fileRef.put(payload.image).then(()=>{
                 console.log("Uploaded And rolling")
             }) 
-                db.collection("articles").add({
-                    actor:{
-                        description:payload.user.email,
-                        title:payload.user.displayName,
-                        date:payload.timestamp,
-                        image:payload.user.photoURL
-                    },
-                    video:payload.video,
-                    sharedImg:payload.image.name,
-                    comments:0,
-                    description:payload.description,
-                });
-                dispatch(setLoading(false));
-                    
+        
+            dispatch(setLoading(false));
         };
     };
 };
