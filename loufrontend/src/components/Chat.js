@@ -64,11 +64,13 @@ function Chat(props) {
                 <strong onClick={GetMessages}>Details </strong>
            </Header>
             
-           <Message>  
+           { chatId?<Message>  
            { chatName && messages.map(({id,data:{message,email,photo,displayName,uid,timestamp}})=>(
                  <TextMess key={id} id={id} email={email} message={message} photo={photo} displayName={displayName} uid={uid} timestamp={timestamp}/>
             ))}
-            </Message>
+            </Message>:
+            <CheckIn></CheckIn>
+            }
            { chatId &&
            <ChatInput>
             
@@ -87,7 +89,12 @@ function Chat(props) {
         </Container>
     )
 }
-
+const CheckIn=styled.div`
+     background: url("/images/default.jpg"); background-repeat: no-repeat;background-size: 100% 100%;
+  
+     background-position: center; flex:1;
+   
+`;
 const Container=styled.div`
      display: flex;
     flex-direction: column;
