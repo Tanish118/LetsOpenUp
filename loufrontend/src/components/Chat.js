@@ -25,19 +25,7 @@ function Chat(props) {
             })))
         ))}
     },[chatId]);
-    const GetMessages=e=>{
-        db
-        .collection('chats').doc(chatId)
-       .collection('messages')
-       .orderBy('timestamp','asc')
-       .onSnapshot(snapShot=>(
-           setMessages(snapShot.docs.map(doc=>({
-               id:doc.id,
-               data:doc.data(),
-           })))
-       ))
-
-   };
+  
 
     const sendMessage=e=>{
          e.preventDefault();       
@@ -61,7 +49,7 @@ function Chat(props) {
            
            <Header>
                 <h4>To :<span>  {chatName}</span></h4>
-                <strong onClick={GetMessages}>Details </strong>
+                <strong >Details </strong>
            </Header>
             
            { chatId?<Message>  
@@ -128,7 +116,7 @@ const Message=styled.div`
    flex:1;
    background-color: white;
    background: url("/images/ggmessenger.jpg");background-position: center; background-repeat: no-repeat;
-   background-size: 100%;
+   background-size: 100% 100%;
 `;
 const ChatInput=styled.div`
     display:flex;
