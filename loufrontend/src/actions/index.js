@@ -67,10 +67,30 @@ export function newPostAPI(payload){
         else if (payload.image!==""){
             const storageRef=firebaseApp.storage().ref()
             const fileRef=storageRef.child(payload.image.name)
-            let upload=fileRef.put(payload.image).then(()=>{
-                console.log("Uploaded And rolling")
-            }) 
-        
+            let uploadTask=fileRef.put(payload.image);
+            uploadTask.on('state_changed', 
+  (snapshot) => {
+    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    console.log('Upload is ' + progress + '% done');
+   
+  },(error)=>console.log(error.code), 
+  () => {
+    const downloadURL = uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => { console.log('File available at', downloadURL);});
+    db.collection("articles").add({
+        actor:{
+            description:payload.user.email,
+            title:payload.user.displayName,
+            date:payload.timestamp,
+            image:payload.user.photoURL
+        },
+        video:payload.video,
+        // sharedImg:downloadURL,
+        comments:0,
+        description:payload.description,
+    });
+    dispatch(setLoading(false));
+  }
+);
             dispatch(setLoading(false));
         };
     };

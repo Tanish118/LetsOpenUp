@@ -100,7 +100,7 @@ function Main(props) {
                                 // props.articles.video?
                                 // console.log(props.article.video):
                                 // <img src="/images/postbg.jpg" alt=""/>
-
+                                // <img src={article.sharedImg} alt=""/>   
                             }
                             {/* {
                                 article.sharedImg?<img src={article.sharedImg} alt="" />:<img src="/images/postbg.jpg" alt=""/>
