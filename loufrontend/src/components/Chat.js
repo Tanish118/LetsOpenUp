@@ -17,7 +17,7 @@ function Chat(props) {
    ;
     useEffect(()=>{
         db
-        .collection("chats").doc(chatId)
+        //  .collection('chats').doc(chatId)
         .collection('messages')
         .orderBy('timestamp','asc')
         .onSnapshot(snapShot=>(
@@ -31,7 +31,7 @@ function Chat(props) {
          e.preventDefault();       
         
         db
-        .collection("chats").doc(chatId)
+        .collection('chats').doc(chatId)
         .collection('messages').add({
           timestamp:firebase.firestore.FieldValue.serverTimestamp(),
             message:input,
@@ -53,7 +53,7 @@ function Chat(props) {
            </Header>
            <Message>
                
-           {messages.map(({id,data:{message,email,photo,displayName,uid,timestamp}})=>(
+           { chatName && messages.map(({id,data:{message,email,photo,displayName,uid,timestamp}})=>(
                  <TextMess key={id} id={id} email={email} message={message} photo={photo} displayName={displayName} uid={uid} timestamp={timestamp}/>
             ))}
             
