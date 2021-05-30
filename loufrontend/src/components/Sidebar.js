@@ -8,10 +8,11 @@ import"./sidebar.css"
 import TargetMessage from './TargetMessage';
 import{connect} from'react-redux'
 import db from '../firebase'
+import firebase from'firebase'
 function Sidebar(props) {
     const [chats,setChats]=useState([]);
     useEffect(()=>{
-        db.collection('chats')        
+        db.collection('chats')  .orderBy("timestamp","desc")      
         .onSnapshot(snapShot=>(
             setChats(snapShot.docs.map(doc=>({
                 id:doc.id,
@@ -23,6 +24,7 @@ function Sidebar(props) {
         const chatName=prompt('Enter ChatName');
         if(chatName){
         db.collection('chats').add({
+            timestamp:firebase.firestore.FieldValue.serverTimestamp(),
             chatName:chatName,
         });
         }
