@@ -75,7 +75,9 @@ export function newPostAPI(payload){
    
   },(error)=>console.log(error.code), 
   async() => {
-    const downloadURL = await uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => { console.log('File available at', downloadURL);});
+    // const downloadURL = await uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => { console.log('File available at', downloadURL);});
+    const downloadURL = await uploadTask.snapshot.ref.getDownloadURL();
+    console.log(downloadURL);
     db.collection("articles").add({
         actor:{
             description:payload.user.email,
@@ -84,7 +86,7 @@ export function newPostAPI(payload){
             image:payload.user.photoURL
         },
         video:payload.video,
-        // sharedImg:downloadURL,
+        sharedImg:downloadURL,
         comments:0,
         description:payload.description,
     });
