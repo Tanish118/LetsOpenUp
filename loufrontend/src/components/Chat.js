@@ -15,18 +15,21 @@ function Chat(props) {
     const [messages,setMessages]=useState([]);
     const chatId=useSelector(selectChatId);
    ;
-    useEffect(()=>{
+  
+    const GetMessages=e=>{
         db
-        //  .collection('chats').doc(chatId)
-        .collection('messages')
-        .orderBy('timestamp','asc')
-        .onSnapshot(snapShot=>(
-            setMessages(snapShot.docs.map(doc=>({
-                id:doc.id,
-                data:doc.data(),
-            })))
-        ))
-    },[chatId]);
+        .collection('chats').doc(chatId)
+       .collection('messages')
+       .orderBy('timestamp','asc')
+       .onSnapshot(snapShot=>(
+           setMessages(snapShot.docs.map(doc=>({
+               id:doc.id,
+               data:doc.data(),
+           })))
+       ))
+
+   };
+
     const sendMessage=e=>{
          e.preventDefault();       
         
@@ -49,7 +52,7 @@ function Chat(props) {
            
            <Header>
                 <h4>To :<span>  {chatName}</span></h4>
-                <strong>Details </strong>
+                <strong onClick={GetMessages}>Details </strong>
            </Header>
            <Message>
                
