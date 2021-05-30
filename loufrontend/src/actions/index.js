@@ -91,7 +91,7 @@ export function newPostAPI(payload){
     dispatch(setLoading(false));
   }
 );
-            dispatch(setLoading(false));
+            // dispatch(setLoading(false));
         };
     };
 };
