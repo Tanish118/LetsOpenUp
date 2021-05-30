@@ -15,7 +15,16 @@ function Chat(props) {
     const [messages,setMessages]=useState([]);
     const chatId=useSelector(selectChatId);
    ;
-  
+    useEffect(()=>{
+        if(chatId){
+        db.collection('chats').doc(chatId).collection('messages').orderBy('timestamp','asc')
+        .onSnapshot(snapShot=>(
+            setMessages(snapShot.docs.map(doc=>({
+                id:doc.id,
+                data:doc.data(),
+            })))
+        ))}
+    },[chatId]);
     const GetMessages=e=>{
         db
         .collection('chats').doc(chatId)
