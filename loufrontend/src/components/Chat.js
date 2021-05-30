@@ -63,15 +63,13 @@ function Chat(props) {
                 <h4>To :<span>  {chatName}</span></h4>
                 <strong onClick={GetMessages}>Details </strong>
            </Header>
-           <Message>
-               
+            
+           <Message>  
            { chatName && messages.map(({id,data:{message,email,photo,displayName,uid,timestamp}})=>(
                  <TextMess key={id} id={id} email={email} message={message} photo={photo} displayName={displayName} uid={uid} timestamp={timestamp}/>
             ))}
-            
-               
-                  
-           </Message>
+            </Message>
+           { chatId &&
            <ChatInput>
             
                 <form>
@@ -85,7 +83,7 @@ function Chat(props) {
                 <IconButton>
                     <SettingsVoiceIcon/>
                 </IconButton>
-           </ChatInput>
+           </ChatInput>}
         </Container>
     )
 }
@@ -122,9 +120,8 @@ const Message=styled.div`
     }
    flex:1;
    background-color: white;
-   background: url("/images/ggmessenger.jpg");
-  
-  background-position: center;
+   background: url("/images/ggmessenger.jpg");background-position: center; background-repeat: no-repeat;
+   background-size: 100%;
 `;
 const ChatInput=styled.div`
     display:flex;
