@@ -12,7 +12,7 @@ function TargetMessage({id,chatName}) {
     const [chatInfo,setChatInfo]=useState([]);
     useEffect(()=>{
       db
-    //   .collection("chats").doc(id)
+      .collection("chats").doc(id)
       .collection("messages")
       .orderBy("timestamp","desc")
       .onSnapshot((snapshot)=>
