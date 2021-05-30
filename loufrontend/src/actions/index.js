@@ -74,8 +74,8 @@ export function newPostAPI(payload){
     console.log('Upload is ' + progress + '% done');
    
   },(error)=>console.log(error.code), 
-  () => {
-    const downloadURL = uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => { console.log('File available at', downloadURL);});
+  async() => {
+    const downloadURL = await uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => { console.log('File available at', downloadURL);});
     db.collection("articles").add({
         actor:{
             description:payload.user.email,
