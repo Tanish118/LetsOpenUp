@@ -18,6 +18,9 @@ const Imessage=styled.div`
    display:flex;
    /* flex-direction: column; */
    border:2px solid lightgray;
-   border-radius:6px;
+   border-radius:6px;@media(max-width:768px){
+    flex-direction: column;
+}
+   
 `;
 export default messenger
