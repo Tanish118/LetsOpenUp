@@ -8,6 +8,7 @@ function TextMess({id,email,message,photo,displayName,uid,timestamp,logged}) {
         <div className={`message ${logged===email && "message_sender"}`}>
                    
             <Avatar className="message_photo" src={photo} />
+            <span className="sender">{displayName}</span>
             <p>
                
                 {message}
