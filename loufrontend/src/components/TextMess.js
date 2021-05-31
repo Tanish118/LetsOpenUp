@@ -2,10 +2,10 @@ import { Avatar } from '@material-ui/core'
 import React from 'react'
 import{connect} from'react-redux'
 import"./text.css"
-function TextMess({id,email,message,photo,displayName,uid,timestamp}) {  
+function TextMess({id,email,message,photo,displayName,uid,timestamp,logged}) {  
     
     return (    
-        <div className={`message ${email===email && "message_sender"}`}>
+        <div className={`message ${logged===email && "message_sender"}`}>
                    
             <Avatar className="message_photo" src={photo} />
             <p>

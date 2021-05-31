@@ -295,7 +295,7 @@ const SharedImg=styled.div`
     img{
         object-fit:contain;
         width:100%;
-        height:100%;
+        max-height: 500px;
     }
 `;
 const SocialCount=styled.ul`

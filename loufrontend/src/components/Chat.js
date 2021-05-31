@@ -14,6 +14,7 @@ function Chat(props) {
     const chatName=useSelector(selectChatName);
     const [messages,setMessages]=useState([]);
     const chatId=useSelector(selectChatId);
+ 
    ;
     useEffect(()=>{
         if(chatId){
@@ -53,8 +54,8 @@ function Chat(props) {
            </Header>
             
            { chatId?<Message>  
-           { chatName && messages.map(({id,data:{message,email,photo,displayName,uid,timestamp}})=>(
-                 <TextMess key={id} id={id} email={email} message={message} photo={photo} displayName={displayName} uid={uid} timestamp={timestamp}/>
+           { chatName && messages.map(({id,data:{message,email,photo,displayName,uid,timestamp,logged}})=>(
+                 <TextMess key={id} id={id} email={email} message={message} photo={photo} displayName={displayName} uid={uid} timestamp={timestamp} logged={props.user.email}/>
             ))}
             </Message>:
             <CheckIn></CheckIn>
@@ -78,7 +79,7 @@ function Chat(props) {
     )
 }
 const CheckIn=styled.div`
-     background: url("/images/default.jpg"); background-repeat: no-repeat;background-size: 100% 100%;
+     background: url("/images/crazy.gif"); background-repeat: no-repeat;background-size: 100% 100%;
   
      background-position: center; flex:1;
    
