@@ -35,7 +35,7 @@ function App(props) {
             <Profile />
             </Route> 
             
-            <Route exact Path="/messenger">
+            <Route exact path="/messenger">
               <Header/>
               <Messenger/>
             </Route>

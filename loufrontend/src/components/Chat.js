@@ -79,7 +79,7 @@ function Chat(props) {
     )
 }
 const CheckIn=styled.div`
-     background: url("/images/crazy.gif"); background-repeat: no-repeat;background-size: 100% 100%;
+     background: url("/images/crazy.png"); background-repeat: no-repeat;background-size: 100% 100%;
   
      background-position: center; flex:1;
    
