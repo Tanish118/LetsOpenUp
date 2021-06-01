@@ -118,6 +118,7 @@ const Message=styled.div`
    background-color: white;
    background: url("/images/ggmessenger.jpg");background-position: center; background-repeat: no-repeat;
    background-size: 100% 100%;
+   padding: 5px;
 `;
 const ChatInput=styled.div`
     display:flex;

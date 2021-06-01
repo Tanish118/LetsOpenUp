@@ -4,7 +4,8 @@
     position:relative;
     width:fit-content;
     justify-content: space-between;
-    margin:15px;
+    margin:20px;
+    padding: 5px;
 }
 .message>p{
     margin:10px;
@@ -29,7 +30,7 @@
        font-size:10px;
 }
 .message_sender{
-    margin-left:auto;    
+    margin-left:auto;
 }
 .message_sender>.message_photo{
     order:1;
