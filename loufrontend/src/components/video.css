@@ -1,0 +1,17 @@
+.capture{
+    margin-top:65px;
+    position: relative;
+    display:flex;
+    align-items:center;
+    flex-direction: column;
+    justify-content  :center ;
+    background-color: #22bfa0;
+    height:89vh;
+}
+.cap_button{
+    position: absolute;
+    left:50%;
+    bottom:0;
+    transform: translate(-50%,-90%);   
+    color:white;
+}

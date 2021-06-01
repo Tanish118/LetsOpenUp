@@ -13,6 +13,7 @@ import Profile from './components/Userprofile';
 import { connect } from 'react-redux';
 import Messenger from'./components/Messenger'
 import Video from './components/Video';
+import Preview from './components/Preview';
 
 function App(props) {
   useEffect(()=>{
@@ -45,7 +46,10 @@ function App(props) {
               <Header/>
               <Video/>
             </Route>
-            
+            <Route exact path="/preview">
+              <Header/>
+              <Preview/>
+            </Route>
         </Switch>
       </Router>
     </div>
