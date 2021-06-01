@@ -17,7 +17,7 @@ function TextMess({id,email,message,photo,displayName,uid,timestamp,logged}) {
             <small>  {timestamp?.toDate().toLocaleTimeString()}  <br/>        
             {timestamp?.toDate().toDateString()} 
             </small>
-        
+            
      
         </div>   
     )
