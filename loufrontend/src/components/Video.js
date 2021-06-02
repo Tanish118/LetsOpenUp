@@ -2,7 +2,8 @@ import React,{useRef,useCallback, useState} from 'react'
 import Webcam from 'react-webcam'
 
 import{IconButton} from'@material-ui/core'
-import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
+
+import CameraIcon from '@material-ui/icons/Camera';
 import { useDispatch } from 'react-redux';
 import { setCameraImage } from '../reducers/cameraSlice';
 import { useHistory } from 'react-router';
@@ -35,7 +36,7 @@ function Video() {
                 width={videoConst.width}
                 videoConstraints={videoConst}
             />
-            <IconButton><RadioButtonUncheckedIcon className="cap_button" onClick={capture} fontSize="large"/></IconButton>
+            <IconButton><CameraIcon className="cap_button" onClick={capture} fontSize="large"/></IconButton>
             {/* <img src={image} alt=""/> */}
            
             

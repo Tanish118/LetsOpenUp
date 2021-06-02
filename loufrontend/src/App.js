@@ -43,11 +43,10 @@ function App(props) {
             </Route>
 
             <Route exact path="/video">
-              <Header/>
+              {/* <Header/> */}
               <Video/>
             </Route>
             <Route exact path="/preview">
-              <Header/>
               <Preview/>
             </Route>
         </Switch>

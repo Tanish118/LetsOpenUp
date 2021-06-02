@@ -1,9 +1,13 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import styled from'styled-components'
-import { selectCameraImage } from '../reducers/cameraSlice';
+import { resetCameraImage, selectCameraImage } from '../reducers/cameraSlice';
 import { useHistory } from 'react-router';
+import CloseIcon from '@material-ui/icons/Close';
+import { useDispatch } from 'react-redux';
+import"./preview.css"
 function Preview() {
+    const dispatch=useDispatch();
     const cameraImage=useSelector(selectCameraImage);
     const history=useHistory();
     useEffect(()=>{
@@ -11,18 +15,19 @@ function Preview() {
         {
             history.replace('/video');
         }
-    },[cameraImage,history])
+    },[cameraImage,history]);
+    const closePreview=()=>{
+     dispatch(resetCameraImage);
+     history.replace('/video');
+    }
     return (
-        <Container>
-            <h2>preview</h2>
-            
+        <div className="preview">
+          
+            <CloseIcon onClick={closePreview} className="preClose"/>
             <img src={cameraImage} alt=""/>
-        </Container>
+        </div>
     )
 }
-const Container=styled .div`
-   margin-top:65px;
-   display:flex;
-`;
+
 
 export default Preview

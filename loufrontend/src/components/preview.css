@@ -1,0 +1,18 @@
+.preview{
+    /* margin-top:65px; */
+    position: relative;
+      display:flex;
+      align-items:center;
+      flex-direction: column;
+      justify-content  :center ;
+      background-color: #22bfa0;
+      height:100vh;
+}
+.preClose{
+    position:absolute;
+    top:0;
+    margin:65px;
+    font-size: 28px;
+    color:white;
+   
+}
