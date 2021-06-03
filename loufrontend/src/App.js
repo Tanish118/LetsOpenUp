@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import Messenger from'./components/Messenger'
 import Video from './components/Video';
 import Preview from './components/Preview';
+import VideoApp from './components/VideoApp';
 
 function App(props) {
   useEffect(()=>{
@@ -48,6 +49,10 @@ function App(props) {
             </Route>
             <Route exact path="/preview">
               <Preview/>
+            </Route>
+            <Route exact path="/videoCall">
+              {/* <Header/> */}
+              <VideoApp/>
             </Route>
         </Switch>
       </Router>
