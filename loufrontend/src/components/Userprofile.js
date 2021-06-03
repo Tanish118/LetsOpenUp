@@ -4,6 +4,7 @@ import styled from'styled-components'
 import{Redirect} from'react-router-dom'
 import {connect} from 'react-redux'
 import {getArticlesAPI} from '../actions'
+import UserPost from './UserPost'
  function Userprofile(props){
     useEffect(()=>{
         props.getArticles();
@@ -23,12 +24,14 @@ import {getArticlesAPI} from '../actions'
                 content: '',
             }}>
                 <div>
-                    <img style={{width:"180px",height:"180px",borderRadius:"90%"}}
-                    src="https://images.unsplash.com/photo-1617350697117-536a7e59a2cd?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDM5MHx0b3dKWkZza3BHZ3x8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt='stick'/>
+                    {props.user && <img style={{width:"180px",height:"180px",borderRadius:"90%"}}
+                    src={props.user.photoURL}/>}
                 </div>
                 <div>
-                    <div> <p className="picture"> Peter.mckinnon </p>
-                    <button className='doll'>Edit profile</button></div>
+                    <div>{props.user && <p className="picture">{props.user.displayName} </p>}                    
+                    <Editbutton><center>Edit Profile </center></Editbutton>
+                    </div>
+                   
                     <div style={{
                     display:"flex",
                     justifyContent:"space-around",
@@ -39,25 +42,20 @@ import {getArticlesAPI} from '../actions'
                         <p>64 followers</p>
                         <p>67 following</p>
                     </div>
-                   <h3 style={{padding:10}}>Peter mckinnon</h3>
+                  {props.user && <h3 style={{padding:10}}>{props.user.displayName} </h3>}
                    <p style={{width:300}}>Sometimes you'll never know the value of that moment ,until it becomes memory.</p>  
                 </div>
             </div>          
                 {   props.articles.length>0 &&
                     props.articles.map((article,key)=>(
-                <Article key={key}>   
-                          {article.actor.description}
+                <Article key={key}>               
                     <SharedImg>
-                        <a>
-                            {  <img src={article.sharedImg} alt=""/>                                
-                               
-                            }
-                           
+                       
+                            {  props.user.email==article.actor.description &&  <img src={article.sharedImg} alt=""/> 
+                            }  
                             
-                        </a>
-                    </SharedImg>
-               
-                 
+                       
+                    </SharedImg>  
                 </Article> 
                     ))}         
             </div>
@@ -89,12 +87,24 @@ const SharedImg=styled.div`
     img{
         object-fit:contain;
         width:100%;
-        max-height: 500px;
+        /* max-height: 500px; */
         @media (max-width: 768px) {
             max-height: 400px;
         }
     }
 `;
+const Editbutton=styled.div`
+    border:2px solid #2222a1;
+    border-radius:8px;
+    align-items:center;
+    padding: 5px 20px;
+    margin-top:10px;margin-bottom:10px; background-color:#6fbdae; color:white;
+    cursor: pointer;
+    &:hover{
+        background-color:#22bfa0; 
+    }
+`;
+
 const Container=styled.div`
 padding :0px;
 `;
