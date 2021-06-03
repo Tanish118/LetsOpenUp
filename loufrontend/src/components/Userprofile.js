@@ -1,9 +1,13 @@
 import React from 'react'
+import {useState,useEffect} from'react'
 import styled from'styled-components'
 import{Redirect} from'react-router-dom'
 import {connect} from 'react-redux'
-
- function profile(props){
+import {getArticlesAPI} from '../actions'
+ function Userprofile(props){
+    useEffect(()=>{
+        props.getArticles();
+    },[]);
     return (
             
         <div style={{maxWidth:"900px",margin:"0px auto"}}>
@@ -38,22 +42,59 @@ import {connect} from 'react-redux'
                    <h3 style={{padding:10}}>Peter mckinnon</h3>
                    <p style={{width:300}}>Sometimes you'll never know the value of that moment ,until it becomes memory.</p>  
                 </div>
+            </div>          
+                {   props.articles.length>0 &&
+                    props.articles.map((article,key)=>(
+                <Article key={key}>   
+                          {article.actor.description}
+                    <SharedImg>
+                        <a>
+                            {  <img src={article.sharedImg} alt=""/>                                
+                               
+                            }
+                           
+                            
+                        </a>
+                    </SharedImg>
+               
+                 
+                </Article> 
+                    ))}         
             </div>
-            <div className="gallery">
-
-                <img  className="item" src="https://images.unsplash.com/photo-1621354236838-78d7d91dd908?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOTF8fHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt='thick' />
-                <img  className="item" src="https://images.unsplash.com/photo-1621354236838-78d7d91dd908?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOTF8fHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt='thick' />
-                <img  className="item" src="https://images.unsplash.com/photo-1621354236838-78d7d91dd908?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOTF8fHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt='thick' />
-                <img  className="item" src="https://images.unsplash.com/photo-1621354236838-78d7d91dd908?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOTF8fHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt='thick' />
-                <img  className="item" src="https://images.unsplash.com/photo-1621354236838-78d7d91dd908?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOTF8fHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt='thick' />
-                <img  className="item" src="https://images.unsplash.com/photo-1621354236838-78d7d91dd908?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOTF8fHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt='thick' />
-                <img  className="item" src="https://images.unsplash.com/photo-1621354236838-78d7d91dd908?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOTF8fHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt='thick' />
-              
-            </div>
-        </div>
     )
 
 }
+const CommonCard=styled.div`
+    text-align:center;
+    overflow:hidden;
+    margin-bottom:8px;
+    background-color:#fff;
+    border-radius:5px;
+    border:none;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 15%), 0 0 0 rgb(0 0 0 / 20%);
+`;
+const Article=styled(CommonCard)`
+    
+    padding:0;
+    margin:5px 0 8px;
+    overflow:visible;
+
+`;
+const SharedImg=styled.div`
+    margin-top:8px;
+    width:100%;
+    display:block;
+    position:relative;
+    background-color:#f9fafb;
+    img{
+        object-fit:contain;
+        width:100%;
+        max-height: 500px;
+        @media (max-width: 768px) {
+            max-height: 400px;
+        }
+    }
+`;
 const Container=styled.div`
 padding :0px;
 `;
@@ -61,8 +102,13 @@ padding :0px;
 const mapStateToProps=(state)=>{
     return{
         user:state.userState.user,
+        loading:state.articleState.loading,
+        articles:state.articleState.articles,
     };
-};
-export default connect(mapStateToProps)(profile)
+  };
+const mapDispatchToProps=(dispatch)=>({
+    getArticles:(payload)=>dispatch(getArticlesAPI(payload)),
+});
+export default connect(mapStateToProps,mapDispatchToProps)(Userprofile);
 
     
