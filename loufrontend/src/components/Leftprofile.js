@@ -57,7 +57,7 @@ function Leftprofile(props) {
 
 const Container = styled.div`
   grid-area: left;
-
+ 
 
 `;
 

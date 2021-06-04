@@ -97,7 +97,7 @@ const Header=styled.div`
     padding:20px;
     justify-content: space-between; 
     border-bottom:1px solid lightgray;
-    background-color: #f5f5f5;
+    background-color: white;
     &>h4{
         font-weight:500;
         color:gray;
@@ -116,8 +116,8 @@ const Message=styled.div`
         display:none;
     }
    flex:1;
-   background-color: white;
-   background: url("/images/ggmessenger.jpg");background-position: center; background-repeat: no-repeat;
+
+   background-color:white;
    background-size: 100% 100%;
    padding: 5px;
 `;

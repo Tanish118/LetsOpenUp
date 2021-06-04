@@ -36,7 +36,7 @@ function TargetMessage({id,chatName}) {
                 </p>
                 <small>
                     {/* {chatInfo[0].timestamp?.toDate().toLocaleTimeString()} */}
-                      time
+                      {/* time */}
                     </small>
             </div >
         </Container>

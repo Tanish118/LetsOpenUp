@@ -28,8 +28,9 @@ function Home(props) {
 
 
 const Container=styled.div`
-    padding:52px;
+    padding:40px 0 0 52px;
     max-width:100%;
+    
     
 `;
 const Content=styled.div`
@@ -52,7 +53,7 @@ h5{
 p{
     font-size:16px;
     color:#434649;
-    font-weight:600px;
+    font-weight:600px;  
 }
 @media(max-width:768px){
     flex-direction:column;
@@ -61,6 +62,7 @@ p{
 
 `;
 const Layout=styled.div`
+    
     display:grid;
     grid-template-areas:"left main right";
     grid-template-columns:minmax(0,5fr) minmax(0,12fr) minmax(300px,7fr);

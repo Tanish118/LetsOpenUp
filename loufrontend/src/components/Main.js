@@ -37,7 +37,7 @@ function Main(props) {
     return (
         <>
         { props.articles.length===0?
-        (<p>There Are Nothing Posted ..</p>)
+        ( <p>Nothing Posted</p>)
         :(
         <Container>                    
             <Sharebox>
