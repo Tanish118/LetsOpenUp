@@ -4,6 +4,9 @@ import Leftprofile from './Leftprofile'
 import Main from './Main'
 import{Redirect} from'react-router-dom'
 import {connect} from 'react-redux'
+import Rightprofile from './Rightprofile'
+
+
 function Home(props) {
     return (
      <Container>
@@ -15,8 +18,8 @@ function Home(props) {
          <Layout>            
                 <Leftprofile/>       
                 <Main/>   
-                         
-               
+               <Rightprofile/>
+                
          </Layout>
 
      </Container>
@@ -27,7 +30,7 @@ function Home(props) {
 const Container=styled.div`
     padding:52px;
     max-width:100%;
-
+    
 `;
 const Content=styled.div`
 max-width:1128px;

@@ -57,6 +57,8 @@ function Leftprofile(props) {
 
 const Container = styled.div`
   grid-area: left;
+
+
 `;
 
 const ArtCard = styled.div`

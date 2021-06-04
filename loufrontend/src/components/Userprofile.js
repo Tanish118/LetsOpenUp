@@ -1,32 +1,22 @@
 import React from 'react'
-import {useState,useEffect} from'react'
+import {useEffect} from'react'
 import styled from'styled-components'
-import{Redirect} from'react-router-dom'
+import ReactPlayer from'react-player'
 import {connect} from 'react-redux'
 import {getArticlesAPI} from '../actions'
-import UserPost from './UserPost'
+
  function Userprofile(props){
     useEffect(()=>{
         props.getArticles();
     },[]);
     return (
             
-        <div style={{maxWidth:"900px",margin:"0px auto"}}>
-            <div style={{
-                display:"flex",
-                justifyContent:"space-around",
-                margin:"70px 0px",
-                borderBottom:"1px solid grey",
-                bottom: 0,
-                top:0,
-                right:0,
-                left:0,
-                content: '',
-            }}>
-                <div>
-                    {props.user && <img style={{width:"180px",height:"180px",borderRadius:"90%"}}
+        <Container>
+         <HeaderWrap>
+                <Userpic>
+                    {props.user && <img 
                     src={props.user.photoURL}/>}
-                </div>
+                </Userpic>
                 <div>
                     <div>{props.user && <p className="picture">{props.user.displayName} </p>}                    
                     <Editbutton><center>Edit Profile </center></Editbutton>
@@ -38,56 +28,79 @@ import UserPost from './UserPost'
                     width:"110%",
                     
                 }} >
-                        <p>5 posts</p>
+                        {/* <p>5 posts</p> */}
                         <p>64 followers</p>
                         <p>67 following</p>
                     </div>
                   {props.user && <h3 style={{padding:10}}>{props.user.displayName} </h3>}
                    <p style={{width:300}}>Sometimes you'll never know the value of that moment ,until it becomes memory.</p>  
                 </div>
-            </div>          
+                </HeaderWrap>   
+                <Content>    
                 {   props.articles.length>0 &&
                     props.articles.map((article,key)=>(
-                <Article key={key}>               
-                    <SharedImg>
-                       
-                            {  props.user.email==article.actor.description &&  <img src={article.sharedImg} alt=""/> 
-                            }  
-                            
-                       
-                    </SharedImg>  
-                </Article> 
-                    ))}         
-            </div>
+                    <center>
+                    {props.user.email==article.actor.description&&
+                    <SharedImg key={key}>
+                        {  article.video? <ReactPlayer width={"100%"} url={article.video}/>
+                                :<img src={article.sharedImg} alt=""/>                                
+                               
+                            }
+                    </SharedImg> 
+                    }
+                    </center>  
+                    ))}  
+                    </Content>         
+           </Container>
     )
 
 }
-const CommonCard=styled.div`
-    text-align:center;
-    overflow:hidden;
-    margin-bottom:8px;
-    background-color:#fff;
-    border-radius:5px;
-    border:none;
-    box-shadow: 0 0 0 1px rgb(0 0 0 / 15%), 0 0 0 rgb(0 0 0 / 20%);
+const Content=styled.div`
+    display:grid;
+    grid-gap:25px;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+`
+const Userpic=styled.div`
+    &>img{
+        width:180px;
+        height:180px;
+        border-radius:90%;
+        @media (max-width: 768px) {
+            width:100px;
+        height:100px;
+        }
+    }
 `;
-const Article=styled(CommonCard)`
-    
-    padding:0;
-    margin:5px 0 8px;
-    overflow:visible;
+const HeaderWrap=styled.div`
+    display:flex;
+    justify-content: space-around;
+    margin:70px 0;
+    border-bottom:2px solid gray;
+`;
 
-`;
-const SharedImg=styled.div`
-    margin-top:8px;
-    width:100%;
-    display:block;
-    position:relative;
-    background-color:#f9fafb;
+const SharedImg=styled.div` 
+    border-radius:10px;
+     margin-bottom:25px;
+    background-color: black;
+    overflow:hidden;
+    cursor:pointer; 
+    width:25vw; max-height:30vh;min-height:30vh;
+   
+    border:3px solid rgba(249,249,249,0.1);
+    box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px,
+    rgb(0 0 0 / 73%) 0px 16px 10px -10px;
+    transition:all 250ms cubic-bezier(0.25, 0.46, 0.45,0.94)0s;
+   
+    &:hover{
+        box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px,
+        rgb(0 0 0 / 73%) 0px 16px 10px -10px;
+        transform :scale(1.05);
+        border-color:rgba(249,249,249,0.8);
+    }
     img{
         object-fit:contain;
         width:100%;
-        /* max-height: 500px; */
+        max-height: 500px;
         @media (max-width: 768px) {
             max-height: 400px;
         }
@@ -106,7 +119,8 @@ const Editbutton=styled.div`
 `;
 
 const Container=styled.div`
-padding :0px;
+    max-Width:900PX;
+    margin: auto;
 `;
 
 const mapStateToProps=(state)=>{
