@@ -4,7 +4,7 @@ import{connect} from 'react-redux'
 import{signInAPI} from '../actions'
 import {Redirect} from 'react-router'
 import Loginmodel from './Loginmodel'
-import JoinModal from './JoinModal'
+
 function Login(props) {
     
     return (

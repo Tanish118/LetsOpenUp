@@ -6,14 +6,19 @@ import Sidebar from './Sidebar'
 function Rightprofile() {
     return (
         <Container>
-            
+            <TryBall>
                <MeSide/>
            
                 <MeChat/>
-            
+                </TryBall>
         </Container>
     )
 }
+const TryBall=styled.div`
+  
+  top:70px;bottom:0;
+  position:sticky;
+`;
 const Container =styled.div`
 @media(max-width:768px){
     display: none;

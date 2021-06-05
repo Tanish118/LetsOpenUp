@@ -3,7 +3,7 @@ import styled from'styled-components'
 import {connect} from 'react-redux'
 function Leftprofile(props) {
     return (
-        <Container>
+        <Container><TryBall>
       <ArtCard>
         <UserInfo>
           <CardBackground />
@@ -51,10 +51,14 @@ function Leftprofile(props) {
           <span>Discover more</span>
         </a>
       </CommunityCard>
-    </Container>
+      </TryBall> </Container>
   );
 };
-
+const TryBall=styled.div`
+ 
+  top:60px;
+  position:sticky;
+`;
 const Container = styled.div`
   grid-area: left;
  
