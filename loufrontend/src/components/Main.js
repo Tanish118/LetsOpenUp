@@ -295,7 +295,7 @@ const SharedImg=styled.div`
     img{
         object-fit:contain;
         width:100%;
-        max-height: 500px;
+        /* max-height: 500px; */
         @media (max-width: 768px) {
             max-height: 400px;
         }

@@ -55,8 +55,7 @@ function Leftprofile(props) {
   );
 };
 const TryBall=styled.div`
- 
-  top:60px;
+top:70px;bottom:0;
   position:sticky;
 `;
 const Container = styled.div`

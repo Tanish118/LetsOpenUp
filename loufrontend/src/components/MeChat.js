@@ -88,7 +88,7 @@ const Container=styled.div`
      display: flex;
     flex-direction: column;
     flex:0.65;
-    height:350px;   border:1px solid lightgray;
+    height:370px;   border:1px solid lightgray;
     
 `;
 const Header=styled.div`

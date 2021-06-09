@@ -33,7 +33,7 @@ function MeSide(props) {
         <Container>      
         <Header>
         
-            <Avatar src={props.user && props.user.photoURL} className="side_avatar"/>
+            {/* <Avatar src={props.user && props.user.photoURL} className="side_avatar"/> */}
             <SideInput>
                     <SearchIcon/>
                     <input placeholder="search"></input>
@@ -55,7 +55,7 @@ function MeSide(props) {
 const Container=styled.div`
 
     flex:0.35;
-    height:280px;
+    height:260px;
     display:flex;
     flex-direction:column;
     background-color:white;

@@ -15,7 +15,7 @@ import Messenger from'./components/Messenger'
 import Video from './components/Video';
 import Preview from './components/Preview';
 import VideoApp from './components/VideoApp';
-
+import OneOnOne from './components/OneOnOne';
 function App(props) {
   useEffect(()=>{
     props.getUserAuth();
@@ -54,6 +54,10 @@ function App(props) {
               {/* <Header/> */}
               <VideoApp/>
             </Route>
+            <Route exact path="/mess2">
+              <OneOnOne/>
+            </Route>
+
         </Switch>
       </Router>
     </div>
