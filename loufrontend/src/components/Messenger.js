@@ -4,7 +4,7 @@ import Chat from './Chat'
 import Sidebar from'./Sidebar'
 function messenger() {
     return (
-        <Imessage>
+    <Imessage>
         {/* Adding Sidebar */}
         <Sidebar/>
         {/* Chatting Area */}

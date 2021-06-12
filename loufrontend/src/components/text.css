@@ -1,27 +1,28 @@
-.message{
+.Comment{
     display:flex;
     align-items: center;
     position:relative;
-    width:fit-content;
+    width:100%;
     justify-content: space-between;
-    margin:25px;
+    margin:5px;
 }
-.message>p{
+.Comment>p{
     margin:10px;
     border-radius:20px 5px 20px 5px;
-    padding:15px;
+    padding:5px;
+    width:100%;
     background-color: #22bfa0;
     color:white;
     margin-right: auto;
 }
-.message>small{
+.Comment>small{
     color:gray;
         position: absolute;
        bottom:-15px;     
        right:0;
        font-size:12px;
 }
-.message>span{
+.Comment>span{
     color:gray;
         position: absolute;
        top:-5px;     

@@ -10,13 +10,20 @@ import PhotoIcon from '@material-ui/icons/Photo';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import {getArticlesAPI} from '../actions'
 import ReactPlayer from'react-player'
+import Comments from './Comments'
 function Main(props) {
     const [showModal,setModal]=useState("close");
-
+    const[input,setInput] = useState("");     
     useEffect(()=>{
         props.getArticles();
     },[]);
 
+    const sendMessage=e=>{
+        e.preventDefault();       
+    
+       setInput("");
+
+   };
     const handleClick=(e)=>{
         e.preventDefault();
         if(e.target !== e.currentTarget){
@@ -76,6 +83,7 @@ function Main(props) {
                     props.articles.map((article,key)=>(
                 <Article key={key}>
                     <SharedActor>
+                        {article.id}
                         <a>
                             <img src={article.actor.image} alt="" />
                             <div>
@@ -113,6 +121,7 @@ function Main(props) {
                            <span>2 comments</span>
                             </a></li>
                     </SocialCount>
+                            
                     <SocialActions>
                         <button>
                             <img src="/images/heart.svg" alt="" width="25" height="20"/>
@@ -127,6 +136,16 @@ function Main(props) {
                             <span>Share</span>
                         </button>
                     </SocialActions>
+                    <CommentSection>
+                    <form>
+                        <input 
+                        value={input} onChange={(e)=>setInput(e.target.value)} placeholder="Lets Hangout" type="text"/>
+                        <button onClick={sendMessage}>Send Message</button>
+                    </form>
+                        <Comments/>
+                        <Comments/>
+                        <Comments/> <Comments/>
+                    </CommentSection>
                 </Article> 
                     ))}               
                 </Content>
@@ -137,6 +156,26 @@ function Main(props) {
     )
 }
 
+const CommentSection=styled.div`    
+    align-items: center;
+    padding:10px 20px;
+    border-top:1px solid lightgray;
+    background-color: #f5f5f5;
+    &>form{
+        flex:1;
+        &>input{
+            width:98%;
+            outline-width: 0;
+            border:1px solid lightgray;
+            padding:5px;
+            border-radius:9px;
+           
+        }
+        &>button{
+            display: none;
+        }
+    }
+`;
 const Content=styled.div`
     text-align:center;
     &>img{
