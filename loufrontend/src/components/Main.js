@@ -13,6 +13,7 @@ import ReactPlayer from'react-player'
 import Comments from './Comments'
 function Main(props) {
     const [showModal,setModal]=useState("close");
+    const [showComment,setComment]=useState("close");
     const[input,setInput] = useState("");     
     useEffect(()=>{
         props.getArticles();
@@ -24,6 +25,23 @@ function Main(props) {
        setInput("");
 
    };
+   const commentClick=(e)=>{
+    e.preventDefault();
+    if(e.target !== e.currentTarget){
+        return;
+    }
+    switch(showComment){
+        case "open":
+            setComment("close");
+            break;
+        case "close":
+            setComment("open");
+            break;
+        default:
+            setComment("close");
+            break;
+    }
+};
     const handleClick=(e)=>{
         e.preventDefault();
         if(e.target !== e.currentTarget){
@@ -129,14 +147,15 @@ function Main(props) {
                         </button>
                         <button>
                             <img src="/images/icon-comment.svg" alt="" width="25" height="20"/>
-                            <span>Comment</span>
+                            <span onClick={(event)=>commentClick(event)}>Comment</span>
                         </button>
                         <button>
                             <img src="/images/next.svg" alt="" width="25" height="20"/>
                             <span>Share</span>
                         </button>
                     </SocialActions>
-                    <CommentSection>
+                    { showComment ==='open' &&
+                    <CommentSection  showComment={showComment} commentClick={commentClick}>
                     <form>
                         <input 
                         value={input} onChange={(e)=>setInput(e.target.value)} placeholder="Lets Hangout" type="text"/>
@@ -146,6 +165,7 @@ function Main(props) {
                         <Comments/>
                         <Comments/> <Comments/>
                     </CommentSection>
+                        }
                 </Article> 
                     ))}               
                 </Content>
