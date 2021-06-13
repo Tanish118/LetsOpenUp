@@ -15,7 +15,7 @@ import {getArticlesAPI} from '../actions'
          <HeaderWrap>
                 <Userpic>
                     {props.user && <img 
-                    src={props.user.photoURL}/>}
+                    src={props.user.photoURL} alt="where did it go" />}
                 </Userpic>
                 <div>
                     <div>{props.user && <p className="picture">{props.user.displayName} </p>}                    

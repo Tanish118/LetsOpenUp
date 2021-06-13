@@ -1,6 +1,8 @@
 import {useState,useEffect} from'react'
 import React from 'react'
+import db from '../firebase';
 import styled from 'styled-components'
+import {setLike} from '../reducers/likeSlicer'
 import PostModal from'./PostModal'
 import{connect} from'react-redux'
 import AssignmentIcon from '@material-ui/icons/Assignment';
@@ -8,8 +10,13 @@ import EventIcon from '@material-ui/icons/Event';
 import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
 import PhotoIcon from '@material-ui/icons/Photo';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Favorite from '@material-ui/icons/Favorite';
+import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import {getArticlesAPI} from '../actions'
 import ReactPlayer from'react-player'
+import{useDispatch } from'react-redux'
 import Comments from './Comments'
 function Main(props) {
     const [showModal,setModal]=useState("close");
@@ -25,6 +32,32 @@ function Main(props) {
        setInput("");
 
    };
+   const [count, setCount]=useState(0)
+   const [check, setcheck]=useState(true);
+   const dispatch=useDispatch();
+   function checking(){
+      
+    db 
+    .collection('likes')
+    .add({
+ 
+        message:input,
+        uid:props.user.uid,
+        displayName:props.user.displayName,
+        email:props.user.email,
+        photo:props.user.photoURL,
+    });
+   if(check===true)
+    {
+        setCount(count + 1)
+        setcheck(false)
+    }
+    else if(check===false){
+        setCount(count - 1)
+        setcheck(true)
+        }
+    }
+
    const commentClick=(e)=>{
     e.preventDefault();
     if(e.target !== e.currentTarget){
@@ -101,7 +134,7 @@ function Main(props) {
                     props.articles.map((article,key)=>(
                 <Article key={key}>
                     <SharedActor>
-                        {article.id}
+                        
                         <a>
                             <img src={article.actor.image} alt="" />
                             <div>
@@ -121,11 +154,8 @@ function Main(props) {
                     <SharedImg>
                         <a>
                             {  article.video? <ReactPlayer width={"100%"} url={article.video}/>
-                                :<img src={article.sharedImg} alt=""/>                                
-                               
-                            }
-                           
-                            
+                                :<img src={article.sharedImg} alt=""/>                                  
+                            } 
                         </a>
                     </SharedImg>
                     <SocialCount>
@@ -133,18 +163,22 @@ function Main(props) {
                             <img src="/images/flikes.svg" alt="" width="20" height="15"/>
                          
                             <img src="/images/react-clap.svg" alt="" width="20" height="15"/>
-                            <span>75</span>
+                            <span>{article.like}</span>
                             </button></li>
                         <li><a>
-                           <span>2 comments</span>
+                           <span>{article.comments} comments</span>
                             </a></li>
                     </SocialCount>
-                            
+                        
                     <SocialActions>
-                        <button>
-                            <img src="/images/heart.svg" alt="" width="25" height="20"/>
-                            <span>Like</span>
-                        </button>
+                        <button onClick={checking}>
+                            <FormControlLabel
+                            control={<Checkbox icon={<FavoriteBorder />} 
+                                    checkedIcon={<Favorite />}
+                            name="checkedH" />}
+                            />
+                            <span>{article.like} Like</span>
+                            </button>
                         <button>
                             <img src="/images/icon-comment.svg" alt="" width="25" height="20"/>
                             <span onClick={(event)=>commentClick(event)}>Comment</span>

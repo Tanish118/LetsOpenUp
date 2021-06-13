@@ -60,6 +60,7 @@ export function newPostAPI(payload){
         video:payload.video,
         sharedImg:"",
         comments:0,
+        like:0,
         description:payload.description,
             });
             dispatch(setLoading(false));
@@ -88,6 +89,7 @@ export function newPostAPI(payload){
         video:payload.video,
         sharedImg:downloadURL,
         comments:0,
+        like:0,
         description:payload.description,
     });
     dispatch(setLoading(false));
@@ -102,11 +104,14 @@ export function newPostAPI(payload){
 export function getArticlesAPI(){
     return (dispatch)=>{
         let payload;
+        let aritcleid;
         db.collection('articles').orderBy('actor.date',"desc")
         .onSnapshot((snapshot)=>{
             payload=snapshot.docs.map((doc)=>doc.data());
+            // articleid=snapshot.docs.map((doc)=>doc.id);
             console.log("inside get API")
             console.log(payload)
+            // console.log(articleid)
             dispatch(getArticles(payload));
         });
     }
